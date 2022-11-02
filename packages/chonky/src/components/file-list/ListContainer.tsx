@@ -17,10 +17,11 @@ import { SmartFileEntry } from './FileEntry';
 export interface FileListListProps {
     width: number;
     height: number;
+    fileListStyle?: CSSProperties;
 }
 
 export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
-    const { width, height } = props;
+    const { width, height, fileListStyle = { height: 0 } } = props;
 
     const viewConfig = useSelector(selectFileViewConfig);
 
@@ -38,7 +39,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
         // When entry size is null, we use List view
         const rowRenderer = (data: { index: number; style: CSSProperties }) => {
             return (
-                <div style={data.style}>
+                <div style={{ ...data.style  }}>
                     <SmartFileEntry
                         fileId={displayFileIds[data.index] ?? null}
                         displayIndex={data.index}
@@ -52,7 +53,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
             <FixedSizeList
                 ref={listRef as any}
                 className={classes.listContainer}
-                itemSize={viewConfig.entryHeight}
+                itemSize={(fileListStyle.height as any) || viewConfig.entryHeight}
                 height={height}
                 itemCount={displayFileIds.length}
                 width={width}

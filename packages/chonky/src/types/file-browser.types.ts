@@ -1,4 +1,4 @@
-import { ElementType, UIEvent } from 'react';
+import { ElementType, UIEvent, CSSProperties } from 'react';
 import { Nullable } from 'tsdef';
 
 import { ChonkyActions } from '../action-definitions/index';
@@ -165,4 +165,9 @@ export interface FileBrowserProps {
      * Define listener for on scroll events on file lists
      */
     onScroll?: (e: UIEvent<HTMLDivElement>) => void;
+
+    /**
+     * add style on file list
+     */
+    fileListStyle?: CSSProperties
 }

@@ -19,6 +19,7 @@ import { SmartFileEntry } from './FileEntry';
 export interface FileListGridProps {
     width: number;
     height: number;
+    fileListStyle?: CSSProperties & { gridHeight: any }
 }
 
 interface GridConfig {
@@ -65,7 +66,7 @@ export const getGridConfig = (
 };
 
 export const GridContainer: React.FC<FileListGridProps> = React.memo(props => {
-    const { width, height } = props;
+    const { width, height, fileListStyle = { width: 0, gridHeight: 0 } } = props;
 
     const viewConfig = useSelector(selectFileViewConfig) as FileViewConfigGrid;
     const displayFileIds = useSelector(selectors.getDisplayFileIds);
@@ -103,10 +104,18 @@ export const GridContainer: React.FC<FileListGridProps> = React.memo(props => {
     const sizers = useMemo(() => {
         const gc = gridConfigRef;
         return {
-            getColumnWidth: (index: number) =>
-                gc.current.columnWidth! + (index === gc.current.columnCount - 1 ? 0 : gc.current.gutter),
-            getRowHeight: (index: number) =>
-                gc.current.rowHeight + (index === gc.current.rowCount - 1 ? 0 : gc.current.gutter),
+            getColumnWidth: (index: number) => {
+                if (fileListStyle.width) {
+                    return fileListStyle.width as any;
+                }
+                return gc.current.columnWidth! + (index === gc.current.columnCount - 1 ? 0 : gc.current.gutter)
+            },
+            getRowHeight: (index: number) => {
+                if (fileListStyle.gridHeight) {
+                    return fileListStyle.gridHeight;
+                }
+                return gc.current.rowHeight + (index === gc.current.rowCount - 1 ? 0 : gc.current.gutter)
+            },
         };
     }, [gridConfigRef]);
 
@@ -126,7 +135,6 @@ export const GridContainer: React.FC<FileListGridProps> = React.memo(props => {
             const index = data.rowIndex * gc.current.columnCount + data.columnIndex;
             const fileId = displayFileIds[index];
             if (displayFileIds[index] === undefined) return null;
-
             const styleWithGutter: CSSProperties = {
                 ...data.style,
                 paddingRight: data.columnIndex === gc.current.columnCount - 1 ? 0 : gc.current.gutter,

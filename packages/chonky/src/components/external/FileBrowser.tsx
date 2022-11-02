@@ -57,7 +57,7 @@ export const FileBrowser = React.forwardRef<
     );
     const i18n = getValueOrFallback(props.i18n, defaultConfig.i18n);
     const formatters = useMemo(() => ({ ...defaultFormatters, ...i18n?.formatters }), [
-        i18n,
+        i18n
     ]);
 
     const chonkyInstanceId = useStaticValue(() => instanceId ?? shortid.generate());
