@@ -13,4 +13,6 @@ export interface FileEntryProps {
     selected: boolean;
     focused: boolean;
     dndState: DndEntryState;
+    activeStar?: React.ReactElement<any, any>;
+    deactivateStar?: React.ReactElement<any, any>;
 }

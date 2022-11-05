@@ -3,13 +3,20 @@ import { useSelector } from 'react-redux';
 import AutoSizer from 'react-virtualized-auto-sizer';
 
 import { ChonkyActions } from '../../action-definitions/index';
-import { selectCurrentFolder, selectFileViewConfig, selectors } from '../../redux/selectors';
+import {
+    selectCurrentFolder,
+    selectFileViewConfig,
+    selectors,
+} from '../../redux/selectors';
 import { FileViewMode } from '../../types/file-view.types';
 import { ChonkyIconName } from '../../types/icons.types';
 import { useFileDrop } from '../../util/dnd';
 import { ChonkyIconContext } from '../../util/icon-helper';
 import {
-    c, getStripeGradient, makeGlobalChonkyStyles, makeLocalChonkyStyles
+    c,
+    getStripeGradient,
+    makeGlobalChonkyStyles,
+    makeLocalChonkyStyles,
 } from '../../util/styles';
 import { FileListEmpty } from './FileListEmpty';
 import { GridContainer } from './GridContainer';
@@ -17,7 +24,9 @@ import { ListContainer } from './ListContainer';
 
 export interface FileListProps {
     onScroll?: (e: UIEvent<HTMLDivElement>) => void;
-    fileListStyle?: CSSProperties
+    fileListStyle?: CSSProperties & { gridHeight: any };
+    activeStar: React.ReactElement<any, any>;
+    deactivateStar: React.ReactElement<any, any>;
 }
 
 interface StyleState {
@@ -31,11 +40,14 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
 
     const currentFolder = useSelector(selectCurrentFolder);
     const { drop, dndCanDrop, dndIsOverCurrent } = useFileDrop({ file: currentFolder });
-    const styleState = useMemo<StyleState>(() => ({ dndCanDrop, dndIsOverCurrent }), [dndCanDrop, dndIsOverCurrent]);
+    const styleState = useMemo<StyleState>(() => ({ dndCanDrop, dndIsOverCurrent }), [
+        dndCanDrop,
+        dndIsOverCurrent,
+    ]);
 
     const localClasses = useLocalStyles(styleState);
     const classes = useStyles(viewConfig);
-    const { onScroll, fileListStyle } = props;
+    const { onScroll, fileListStyle, activeStar, deactivateStar } = props;
 
     // In Chonky v0.x, this field was user-configurable. In Chonky v1.x+, we hardcode
     // this to `true` to simplify configuration. Users can just wrap Chonky in their
@@ -47,9 +59,23 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
             if (displayFileIds.length === 0) {
                 return <FileListEmpty width={width} height={viewConfig.entryHeight} />;
             } else if (viewConfig.mode === FileViewMode.List) {
-                return <ListContainer width={width} height={height} fileListStyle={fileListStyle} />;
+                return (
+                    <ListContainer
+                        width={width}
+                        height={height}
+                        fileListStyle={fileListStyle}
+                        activeStar={activeStar}
+                        deactivateStar={deactivateStar}
+                    />
+                );
             } else {
-                return <GridContainer width={width} height={height} fileListStyle={fileListStyle} />;
+                return (
+                    <GridContainer
+                        width={width}
+                        height={height}
+                        fileListStyle={fileListStyle}
+                    />
+                );
             }
         },
         [displayFileIds, viewConfig]
@@ -57,10 +83,21 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
 
     const ChonkyIcon = useContext(ChonkyIconContext);
     return (
-        <div onScroll={onScroll} ref={drop} className={c([classes.fileListWrapper, localClasses.fileListWrapper])} role="list">
+        <div
+            onScroll={onScroll}
+            ref={drop}
+            className={c([classes.fileListWrapper, localClasses.fileListWrapper])}
+            role="list"
+        >
             <div className={localClasses.dndDropZone}>
                 <div className={localClasses.dndDropZoneIcon}>
-                    <ChonkyIcon icon={dndCanDrop ? ChonkyIconName.dndCanDrop : ChonkyIconName.dndCannotDrop} />
+                    <ChonkyIcon
+                        icon={
+                            dndCanDrop
+                                ? ChonkyIconName.dndCanDrop
+                                : ChonkyIconName.dndCannotDrop
+                        }
+                    />
                 </div>
             </div>
             <AutoSizer disableHeight={!fillParentContainer}>{listRenderer}</AutoSizer>
@@ -75,8 +112,14 @@ const useLocalStyles = makeLocalChonkyStyles(theme => ({
         background: (state: StyleState) =>
             state.dndIsOverCurrent && state.dndCanDrop
                 ? state.dndCanDrop
-                    ? getStripeGradient(theme.dnd.fileListCanDropMaskOne, theme.dnd.fileListCanDropMaskTwo)
-                    : getStripeGradient(theme.dnd.fileListCannotDropMaskOne, theme.dnd.fileListCannotDropMaskTwo)
+                    ? getStripeGradient(
+                          theme.dnd.fileListCanDropMaskOne,
+                          theme.dnd.fileListCanDropMaskTwo
+                      )
+                    : getStripeGradient(
+                          theme.dnd.fileListCannotDropMaskOne,
+                          theme.dnd.fileListCannotDropMaskTwo
+                      )
                 : 'none',
     },
     dndDropZone: {
@@ -91,8 +134,10 @@ const useLocalStyles = makeLocalChonkyStyles(theme => ({
         zIndex: 2,
     },
     dndDropZoneIcon: {
-        backgroundColor: (state: StyleState) => (state.dndCanDrop ? theme.dnd.canDropMask : theme.dnd.cannotDropMask),
-        color: (state: StyleState) => (state.dndCanDrop ? theme.dnd.canDropColor : theme.dnd.cannotDropColor),
+        backgroundColor: (state: StyleState) =>
+            state.dndCanDrop ? theme.dnd.canDropMask : theme.dnd.cannotDropMask,
+        color: (state: StyleState) =>
+            state.dndCanDrop ? theme.dnd.canDropColor : theme.dnd.cannotDropColor,
         borderRadius: theme.gridFileEntry.borderRadius,
         transform: 'translateX(-50%) translateY(-50%)',
         position: 'absolute',

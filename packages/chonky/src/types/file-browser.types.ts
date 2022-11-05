@@ -169,5 +169,15 @@ export interface FileBrowserProps {
     /**
      * add style on file list
      */
-    fileListStyle?: CSSProperties
+    fileListStyle?: CSSProperties & { gridHeight: any };
+
+    /**
+     * React element
+     */
+    activeStar: React.ReactElement<any, any>;
+    
+    /**
+     * React element
+     */
+    deactivateStar: React.ReactElement<any, any>;
 }
