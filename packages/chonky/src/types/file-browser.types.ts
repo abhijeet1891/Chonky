@@ -180,4 +180,8 @@ export interface FileBrowserProps {
      * React element
      */
     deactivateStar: React.ReactElement<any, any>;
+    /**
+     * React element
+     */
+    tags: React.ReactElement<any, any>;
 }

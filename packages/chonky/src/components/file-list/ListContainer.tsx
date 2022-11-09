@@ -20,10 +20,11 @@ export interface FileListListProps {
     fileListStyle?: CSSProperties & { gridHeight: any };
     activeStar: React.ReactElement<any, any>;
     deactivateStar: React.ReactElement<any, any>;
+    tags: React.ReactElement<any, any>;
 }
 
 export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
-    const { width, height, fileListStyle = { height: 0 }, activeStar, deactivateStar } = props;
+    const { width, height, fileListStyle = { height: 0 }, activeStar, deactivateStar, tags } = props;
 
     const viewConfig = useSelector(selectFileViewConfig);
 
@@ -48,6 +49,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
                         fileViewMode={FileViewMode.List}
                         activeStar={activeStar}
                         deactivateStar={deactivateStar}
+                        tags={tags}
                     />
                 </div>
             );

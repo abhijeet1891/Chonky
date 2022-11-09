@@ -71,6 +71,7 @@ const App = () => {
                 fileListStyle={{ height: 70, width: 182, gridHeight: 150 }}
                 activeStar={<div>active Start</div>}
                 deactivateStar={<div>deactivate Start</div>}
+                tags={<div>Good</div>}
             />
         </div>
     );

@@ -15,4 +15,5 @@ export interface FileEntryProps {
     dndState: DndEntryState;
     activeStar?: React.ReactElement<any, any>;
     deactivateStar?: React.ReactElement<any, any>;
+    tags?: React.ReactElement<any, any>;
 }

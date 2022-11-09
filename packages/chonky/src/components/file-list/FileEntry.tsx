@@ -25,6 +25,7 @@ export interface SmartFileEntryProps {
     fileViewMode: FileViewMode;
     activeStar: React.ReactElement<any, any>;
     deactivateStar: React.ReactElement<any, any>;
+    tags: React.ReactElement<any, any>;
 }
 
 const disabledDndState: DndEntryState = {
@@ -34,7 +35,7 @@ const disabledDndState: DndEntryState = {
 };
 
 export const SmartFileEntry: React.FC<SmartFileEntryProps> = React.memo(
-    ({ fileId, displayIndex, fileViewMode, activeStar, deactivateStar }) => {
+    ({ fileId, displayIndex, fileViewMode, activeStar, deactivateStar, tags }) => {
         const classes = useStyles();
 
         // Basic properties
@@ -59,6 +60,7 @@ export const SmartFileEntry: React.FC<SmartFileEntryProps> = React.memo(
             focused,
             activeStar,
             deactivateStar,
+            tags,
         };
 
         let EntryComponent: React.FC<FileEntryProps>;

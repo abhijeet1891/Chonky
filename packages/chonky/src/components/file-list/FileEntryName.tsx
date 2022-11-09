@@ -14,9 +14,10 @@ import { useFileNameComponent, useModifierIconComponents } from './FileEntry-hoo
 export interface FileEntryNameProps {
     file: Nullable<FileData>;
     className?: string;
+    activeStar?: React.ReactElement<any, any>;
 }
 
-export const FileEntryName: React.FC<FileEntryNameProps> = React.memo(({ file, className }) => {
+export const FileEntryName: React.FC<FileEntryNameProps> = React.memo(({ file, className, tags }) => {
     const modifierIconComponents = useModifierIconComponents(file);
     const fileNameComponent = useFileNameComponent(file);
 
@@ -27,6 +28,7 @@ export const FileEntryName: React.FC<FileEntryNameProps> = React.memo(({ file, c
                 <span className={classes.modifierIcons}>{modifierIconComponents}</span>
             )}
             {fileNameComponent}
+            {tags}
         </span>
     );
 });

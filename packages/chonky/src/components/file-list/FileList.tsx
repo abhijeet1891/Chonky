@@ -27,6 +27,7 @@ export interface FileListProps {
     fileListStyle?: CSSProperties & { gridHeight: any };
     activeStar: React.ReactElement<any, any>;
     deactivateStar: React.ReactElement<any, any>;
+    tags: React.ReactElement<any, any>;
 }
 
 interface StyleState {
@@ -47,7 +48,7 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
 
     const localClasses = useLocalStyles(styleState);
     const classes = useStyles(viewConfig);
-    const { onScroll, fileListStyle, activeStar, deactivateStar } = props;
+    const { onScroll, fileListStyle, activeStar, deactivateStar, tags } = props;
 
     // In Chonky v0.x, this field was user-configurable. In Chonky v1.x+, we hardcode
     // this to `true` to simplify configuration. Users can just wrap Chonky in their
@@ -66,6 +67,7 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
                         fileListStyle={fileListStyle}
                         activeStar={activeStar}
                         deactivateStar={deactivateStar}
+                        tags={tags}
                     />
                 );
             } else {
