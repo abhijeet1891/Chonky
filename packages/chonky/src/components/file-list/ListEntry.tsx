@@ -57,7 +57,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                     className={classes.listFileEntryName}
                     title={file ? file.name : undefined}
                 >
-                    {file?.focused ? activeStar : deactivateStar}
+                    {file?.isStarred ? activeStar : deactivateStar}
                     <FileEntryName file={file} />
                 </div>
                 <div className={classes.listFileEntryProperty}>

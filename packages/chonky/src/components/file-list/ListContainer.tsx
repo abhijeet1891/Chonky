@@ -40,7 +40,6 @@ export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
     const listComponent = useMemo(() => {
         // When entry size is null, we use List view
         const rowRenderer = (data: { index: number; style: CSSProperties }) => {
-            console.log(data);
             return (
                 <div style={{ ...data.style  }}>
                     <SmartFileEntry
