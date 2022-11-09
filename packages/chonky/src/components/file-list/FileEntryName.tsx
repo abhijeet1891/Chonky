@@ -14,7 +14,7 @@ import { useFileNameComponent, useModifierIconComponents } from './FileEntry-hoo
 export interface FileEntryNameProps {
     file: Nullable<FileData>;
     className?: string;
-    activeStar?: React.ReactElement<any, any>;
+    tags?: React.ReactElement<any, any>;
 }
 
 export const FileEntryName: React.FC<FileEntryNameProps> = React.memo(({ file, className, tags }) => {
