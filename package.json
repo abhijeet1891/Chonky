@@ -5,14 +5,21 @@
   "devDependencies": {
     "lerna": "^3.22.1"
   },
-  "homepage": "https://chonky.io/",
+  "homepage": "https://github.com/akbaruddin/Chonky",
   "author": {
-    "name": "Timur Kuzhagaliyev",
-    "email": "tim.kuzh@gmail.com",
-    "url": "https://foxypanda.me/"
+    "name": "akbaruddin"
   },
   "resolutions": {
     "**/typescript": "4.2.2",
     "**/immer": "8.0.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akbaruddin/Chonky.git"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/akbaruddin/Chonky/issues"
   }
 }
