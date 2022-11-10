@@ -17,9 +17,10 @@ export interface FileEntryNameProps {
     tags?: React.ReactElement<any, any>;
 }
 
-export const FileEntryName: React.FC<FileEntryNameProps> = React.memo(({ file, className, tags }) => {
+export const FileEntryName: React.FC<FileEntryNameProps> = React.memo(({ file, className }) => {
     const modifierIconComponents = useModifierIconComponents(file);
     const fileNameComponent = useFileNameComponent(file);
+    const fileTags = file?.tags.split(",");
 
     const classes = useStyles();
     return (
@@ -28,7 +29,13 @@ export const FileEntryName: React.FC<FileEntryNameProps> = React.memo(({ file, c
                 <span className={classes.modifierIcons}>{modifierIconComponents}</span>
             )}
             {fileNameComponent}
-            {tags}
+            {fileTags?.length ? (
+                <div className="chonky-tags">
+                    {fileTags?.map((tag:string, index: number) => (
+                        <span className={'tags-'+ index.toString()+ '-' + tag} key={index.toString()+tag}>{tag}</span>
+                    ))}
+                </div>)
+             : null}
         </span>
     );
 });

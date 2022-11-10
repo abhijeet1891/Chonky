@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="./chonky-custom-logo.png" alt="Chonky Custom Logo" width="500" />
+    <img src="https://i.ibb.co/NT11VzK/chonky-custom-logo.png" alt="Chonky Custom Logo" width="500" />
     <br />
     <a href="https://www.npmjs.com/package/chonky-custom">
         <img
