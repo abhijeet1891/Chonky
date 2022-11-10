@@ -46,6 +46,9 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                         classes.listFileEntrySelection,
                     ])}
                 ></div>
+                <div className={classes.listFileEntryStar}>
+                    {file?.isStarred ? activeStar : deactivateStar}
+                </div>
                 <div className={classes.listFileEntryIcon}>
                     <ChonkyIcon
                         icon={dndIconName ?? entryState.icon}
@@ -57,7 +60,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                     className={classes.listFileEntryName}
                     title={file ? file.name : undefined}
                 >
-                    {file?.isStarred ? activeStar : deactivateStar}
+                    
                     <FileEntryName file={file} tags={tags} />
                 </div>
                 <div className={classes.listFileEntryProperty}>
@@ -97,6 +100,7 @@ const useStyles = makeLocalChonkyStyles(theme => ({
     listFileEntrySelection: {
         opacity: 0.6,
     },
+    listFileEntryStar: {},
     listFileEntryIcon: {
         color: ({ entryState, dndState }: StyleState) =>
             dndState.dndIsOver
