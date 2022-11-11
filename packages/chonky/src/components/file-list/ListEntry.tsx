@@ -46,9 +46,12 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                         classes.listFileEntrySelection,
                     ])}
                 ></div>
-                <div className={classes.listFileEntryStar}>
-                    {file?.isStarred ? activeStar : deactivateStar}
-                </div>
+                {!file?.isDir ? (
+                    <div className={classes.listFileEntryStar}>
+                        {file?.isStarred ? activeStar : deactivateStar}
+                    </div>
+                    ) : null
+                }
                 <div className={classes.listFileEntryIcon}>
                     <ChonkyIcon
                         icon={dndIconName ?? entryState.icon}
