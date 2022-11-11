@@ -46,12 +46,16 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                         classes.listFileEntrySelection,
                     ])}
                 ></div>
-                {!file?.isDir ? (
+                
                     <div className={classes.listFileEntryStar}>
-                        {file?.isStarred ? activeStar : deactivateStar}
+                    {!file?.isDir ? (
+                        <>
+                            {file?.isStarred ? activeStar : deactivateStar}
+                        </>
+                        ) : null
+                    }
                     </div>
-                    ) : null
-                }
+                    
                 <div className={classes.listFileEntryIcon}>
                     <ChonkyIcon
                         icon={dndIconName ?? entryState.icon}
@@ -59,16 +63,15 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                         fixedWidth={true}
                     />
                 </div>
-                {file?.isSearchResults && file?.path ? (
+                {file?.isSearchResults && file?.folderPath ? (
                     <div className={classes.listFileSearch}>
-                        {file?.path}
+                        {file?.folderPath}
                     </div>
                 ): null}
                 <div
                     className={classes.listFileEntryName}
                     title={file ? file.name : undefined}
                 >
-                    
                     <FileEntryName file={file} tags={tags} />
                 </div>
                 <div className={classes.listFileEntryProperty}>
