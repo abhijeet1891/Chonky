@@ -59,6 +59,11 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                         fixedWidth={true}
                     />
                 </div>
+                {file?.isSearchResults && file?.path ? (
+                    <div className={classes.listFileSearch}>
+                        {file?.path}
+                    </div>
+                ): null}
                 <div
                     className={classes.listFileEntryName}
                     title={file ? file.name : undefined}
@@ -116,6 +121,7 @@ const useStyles = makeLocalChonkyStyles(theme => ({
         padding: [2, 4],
         zIndex: 20,
     },
+    listFileSearch: {},
     listFileEntryName: {
         textOverflow: 'ellipsis',
         boxSizing: 'border-box',

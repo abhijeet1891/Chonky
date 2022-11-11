@@ -77,6 +77,7 @@ const useStyles = makeLocalChonkyStyles(theme => ({
         color: '#fff',
         padding: 8,
     },
+    listFileSearch: {},
     listFileEntryDescription: {
         flexDirection: 'column',
         display: 'flex',
