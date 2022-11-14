@@ -20,7 +20,7 @@ export interface FileEntryNameProps {
 export const FileEntryName: React.FC<FileEntryNameProps> = React.memo(({ file, className }) => {
     const modifierIconComponents = useModifierIconComponents(file);
     const fileNameComponent = useFileNameComponent(file);
-    const fileTags = file?.tags.split(",").filter((d:string) => Boolean(d));
+    const fileTags = file?.tags?.split(",").filter((d:string) => Boolean(d));
 
     const classes = useStyles();
     return (

@@ -64,17 +64,17 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                         file={file}
                     />
                 </div>
-                {file?.isSearchResults && file?.folderPath ? (
-                    <div className={classes.listFileSearch}>
-                        {file?.folderPath}
-                    </div>
-                ): null}
                 <div
                     className={classes.listFileEntryName}
                     title={file ? file.name : undefined}
                 >
                     <FileEntryName file={file} tags={tags} />
                 </div>
+                {file?.isSearchResults && file?.folderPath ? (
+                    <div className={classes.listFileSearch}>
+                        {file?.folderPath}
+                    </div>
+                ): null}
                 <div className={classes.listFileEntryProperty}>
                     {file ? (
                         fileModDateString ?? <span>—</span>
@@ -82,7 +82,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                         <TextPlaceholder minLength={5} maxLength={15} />
                     )}
                 </div>
-                <div className={classes.listFileEntryProperty}>
+                <div className={classes.listFileSizeProperty}>
                     {file ? (
                         fileSizeString ?? <span>—</span>
                     ) : (
@@ -140,6 +140,15 @@ const useStyles = makeLocalChonkyStyles(theme => ({
         zIndex: 20,
     },
     listFileEntryProperty: {
+        fontSize: theme.listFileEntry.propertyFontSize,
+        boxSizing: 'border-box',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        flex: '0 1 150px',
+        padding: [2, 8],
+        zIndex: 20,
+    },
+    listFileSizeProperty: {
         fontSize: theme.listFileEntry.propertyFontSize,
         boxSizing: 'border-box',
         whiteSpace: 'nowrap',
