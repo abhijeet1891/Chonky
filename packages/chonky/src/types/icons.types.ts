@@ -100,4 +100,5 @@ export interface ChonkyIconProps {
     className?: string;
     fixedWidth?: boolean;
     style?: React.CSSProperties;
+    file?: object | null;
 }

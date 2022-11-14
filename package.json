@@ -1,7 +1,9 @@
 {
   "name": "root",
   "private": true,
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
     "lerna": "^3.22.1"
   },
@@ -21,5 +23,6 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/akbaruddin/Chonky/issues"
-  }
+  },
+  "dependencies": {}
 }

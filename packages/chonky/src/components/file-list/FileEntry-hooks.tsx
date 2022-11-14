@@ -74,7 +74,7 @@ export const useModifierIconComponents = (file: Nullable<FileData>) => {
     }, [file]);
     const ChonkyIcon = useContext(ChonkyIconContext);
     const modifierIconComponents = useMemo(
-        () => modifierIcons.map((icon, index) => <ChonkyIcon key={`file-modifier-${index}`} icon={icon} />),
+        () => modifierIcons.map((icon, index) => <ChonkyIcon key={`file-modifier-${index}`} icon={icon} file={file}  />),
         // For some reason ESLint marks `ChonkyIcon` as an unnecessary dependency,
         // but we expect it can change at runtime so we disable the check.
         // eslint-disable-next-line react-hooks/exhaustive-deps

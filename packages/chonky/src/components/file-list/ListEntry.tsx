@@ -61,6 +61,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                         icon={dndIconName ?? entryState.icon}
                         spin={dndIconName ? false : entryState.iconSpin}
                         fixedWidth={true}
+                        file={file}
                     />
                 </div>
                 {file?.isSearchResults && file?.folderPath ? (
@@ -88,6 +89,9 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                         <TextPlaceholder minLength={10} maxLength={20} />
                     )}
                 </div>
+                <div className={classes.listFileShared}>
+                    {file?.isShared ? 'Public': 'Private'}
+                </div>
             </div>
         );
     }
@@ -112,6 +116,7 @@ const useStyles = makeLocalChonkyStyles(theme => ({
         opacity: 0.6,
     },
     listFileEntryStar: {},
+    listFileShared: {},
     listFileEntryIcon: {
         color: ({ entryState, dndState }: StyleState) =>
             dndState.dndIsOver
