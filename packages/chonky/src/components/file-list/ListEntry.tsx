@@ -12,6 +12,7 @@ import {
 } from './FileEntry-hooks';
 import { FileEntryName } from './FileEntryName';
 import { FileEntryState, useCommonEntryStyles } from './GridEntryPreview';
+import dotsInFiles from "../../util/dotsInFiles";
 
 interface StyleState {
     entryState: FileEntryState;
@@ -38,7 +39,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
         const ChonkyIcon = useContext(ChonkyIconContext);
         const fileEntryHtmlProps = useFileEntryHtmlProps(file);
         return (
-            <div className={classes.listFileEntry} {...fileEntryHtmlProps}>
+            <div className={`${classes.listFileEntry} ${file?.isChecked ? 'is-checked': ''}`} {...fileEntryHtmlProps}>
                 <div className={commonClasses.focusIndicator}></div>
                 <div
                     className={c([
@@ -72,7 +73,8 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                 </div>
                 {file?.isSearchResults && file?.folderPath ? (
                     <div className={classes.listFileSearch}>
-                        {file?.folderPath}
+                        {dotsInFiles(file?.folderPath)}
+                        <span className="list-file-search-tooltip">{file?.folderPath}</span>
                     </div>
                 ): null}
                 <div className={classes.listFileEntryProperty}>

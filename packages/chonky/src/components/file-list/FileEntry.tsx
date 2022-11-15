@@ -23,9 +23,9 @@ export interface SmartFileEntryProps {
     fileId: Nullable<string>;
     displayIndex: number;
     fileViewMode: FileViewMode;
-    activeStar: React.ReactElement<any, any>;
-    deactivateStar: React.ReactElement<any, any>;
-    tags: React.ReactElement<any, any>;
+    activeStar?: React.ReactElement<any, any>;
+    deactivateStar?: React.ReactElement<any, any>;
+    tags?: React.ReactElement<any, any>;
 }
 
 const disabledDndState: DndEntryState = {
