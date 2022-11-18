@@ -5,7 +5,8 @@
     "packages/*"
   ],
   "devDependencies": {
-    "lerna": "^3.22.1"
+    "lerna": "^3.22.1",
+    "typescript": "^4.9.3"
   },
   "homepage": "https://github.com/abhijeet1891/Chonky",
   "author": {
@@ -23,6 +24,5 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/abhijeet1891/Chonky/issues"
-  },
-  "dependencies": {}
+  }
 }
