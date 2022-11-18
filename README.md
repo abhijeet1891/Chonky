@@ -1,28 +1,28 @@
 <p align="center">
-    <img src="https://i.ibb.co/NT11VzK/chonky-custom-logo.png" alt="Chonky Custom Logo" width="500" />
+    <img src="https://i.ibb.co/NT11VzK/chonky-custom1.1-logo.png" alt="Chonky Custom Logo" width="500" />
     <br />
-    <a href="https://www.npmjs.com/package/chonky-custom">
+    <a href="https://www.npmjs.com/package/chonky-custom1.1">
         <img
             alt="NPM package"
-            src="https://img.shields.io/npm/v/chonky-custom.svg?style=flat&colorB=ffac5c"
+            src="https://img.shields.io/npm/v/chonky-custom1.1.svg?style=flat&colorB=ffac5c"
         />
     </a>
     <a href="https://tldrlegal.com/license/mit-license">
         <img
             alt="MIT license"
-            src="https://img.shields.io/npm/l/chonky-custom?style=flat&colorB=dcd67a"
+            src="https://img.shields.io/npm/l/chonky-custom1.1?style=flat&colorB=dcd67a"
         />
     </a>
-    <a href="https://www.npmjs.com/package/chonky-custom">
+    <a href="https://www.npmjs.com/package/chonky-custom1.1">
         <img
             alt="NPM downloads"
-            src="https://img.shields.io/npm/dt/chonky-custom?style=flat&colorB=aef498"
+            src="https://img.shields.io/npm/dt/chonky-custom1.1?style=flat&colorB=aef498"
         />
     </a>
-    <a href="https://github.com/akbaruddin/Chonky">
+    <a href="https://github.com/abhijeet1891/Chonky">
         <img
             alt="GitHub stars"
-            src="https://img.shields.io/github/stars/akbaruddin/Chonky?style=flat&colorB=50f4cc"
+            src="https://img.shields.io/github/stars/abhijeet1891/Chonky?style=flat&colorB=50f4cc"
         />
     </a>
     <br />
@@ -37,7 +37,7 @@ much more!
 
 ### [Click here for documentation and examples.](https://chonky.io/)
 
-> Please [create an issue](https://github.com/akbaruddin/Chonky/issues) if you have a
+> Please [create an issue](https://github.com/abhijeet1891/Chonky/issues) if you have a
 > problem or want to request a feature.
 
 ## Preview

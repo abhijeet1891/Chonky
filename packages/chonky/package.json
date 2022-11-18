@@ -1,6 +1,6 @@
 {
-  "name": "chonky-custom",
-  "version": "0.0.54",
+  "name": "chonky-custom1.1",
+  "version": "0.0.57",
   "description": "A File Browser component for React",
   "license": "MIT",
   "main": "dist/index.js",
@@ -37,14 +37,14 @@
     "useTabs": false,
     "printWidth": 88
   },
-  "module": "dist/chonky-custom.esm.js",
+  "module": "dist/chonky-custom1.1.esm.js",
   "size-limit": [
     {
-      "path": "dist/chonky-custom.cjs.production.min.js",
+      "path": "dist/chonky-custom1.1.cjs.production.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/chonky-custom.esm.js",
+      "path": "dist/chonky-custom1.1.esm.js",
       "limit": "10 KB"
     }
   ],
@@ -95,16 +95,16 @@
     "styled-components": "^5.3.0",
     "tsdef": "^0.0.14"
   },
-  "homepage": "https://github.com/akbaruddin/Chonky",
+  "homepage": "https://github.com/abhijeet1891/Chonky",
   "author": {
-    "name": "akbaruddin"
+    "name": "abhijeet1891"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/akbaruddin/Chonky.git"
+    "url": "git+https://github.com/abhijeet1891/Chonky.git"
   },
   "bugs": {
-    "url": "https://github.com/akbaruddin/Chonky/issues"
+    "url": "https://github.com/abhijeet1891/Chonky/issues"
   },
   "keywords": [
     "file",

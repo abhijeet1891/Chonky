@@ -120,9 +120,9 @@ export const thunkActivateSortAction = (fileActionId: Nilable<string>): ChonkyTh
     const action = fileActionMap[fileActionId];
     if (!action || !action.sortKeySelector) return;
 
-    let order = oldOrder === SortOrder.ASC ? SortOrder.DESC : SortOrder.ASC;
+    let order = oldOrder === SortOrder.DESC ? SortOrder.ASC : SortOrder.DESC;
     if (oldActionId !== fileActionId) {
-        order = SortOrder.ASC;
+        order = SortOrder.DESC;
     }
 
     dispatch(reduxActions.setSort({ actionId: fileActionId, order: order }));
