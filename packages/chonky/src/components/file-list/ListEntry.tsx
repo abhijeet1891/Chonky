@@ -92,7 +92,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                     )}
                 </div>
                 <div className={classes.listFileShared}>
-                    {file?.isShared ? 'Public': 'Private'}
+                    {file?.isShared ? 'Shared': 'Private'}
                 </div>
             </div>
         );
