@@ -108,7 +108,7 @@ export const useFileNameComponent = (file: Nullable<FileData>) => {
 
         return (
             <div className="chonky-file-name">
-                {file.sortName ?? name}
+              <span className="file-name">{file.sortName ?? name}</span>
                 {extension && <span className="chonky-file-entry-description-title-extension">{extension}</span>}
                 <span className="chonky-file-title">{file.name}</span>
             </div>
