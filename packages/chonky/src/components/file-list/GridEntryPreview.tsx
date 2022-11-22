@@ -13,6 +13,7 @@ import { ChonkyIconContext } from '../../util/icon-helper';
 import { c, important, makeLocalChonkyStyles } from '../../util/styles';
 import { FileThumbnail } from './FileThumbnail';
 import { GridEntryDndIndicator } from './GridEntryDndIndicator';
+import { FileData } from '../../types/file.types';
 
 export type FileEntryState = {
     childrenCount: Nullable<number>;
@@ -28,6 +29,7 @@ export interface FileEntryPreviewProps {
     className?: string;
     entryState: FileEntryState;
     dndState: DndEntryState;
+    file:Nullable<FileData>;
 }
 
 export const GridEntryPreviewFolder: React.FC<FileEntryPreviewProps> = React.memo(props => {
@@ -129,7 +131,7 @@ const useFolderStyles = makeLocalChonkyStyles(theme => ({
 }));
 
 export const GridEntryPreviewFile: React.FC<FileEntryPreviewProps> = React.memo(props => {
-    const { className: externalClassName, entryState, dndState } = props;
+    const { className: externalClassName, entryState, dndState,file } = props;
 
     const fileClasses = useFileStyles(entryState);
     const commonClasses = useCommonEntryStyles(entryState);
@@ -142,7 +144,7 @@ export const GridEntryPreviewFile: React.FC<FileEntryPreviewProps> = React.memo(
         <div className={className}>
             <GridEntryDndIndicator className={fileClasses.dndIndicator} dndState={dndState} />
             <div className={fileClasses.fileIcon}>
-                <ChonkyIcon icon={entryState.icon} spin={entryState.iconSpin} />
+                <ChonkyIcon icon={entryState.icon} spin={entryState.iconSpin} file={file}/>
             </div>
             <div className={commonClasses.selectionIndicator}></div>
             <FileThumbnail className={fileClasses.thumbnail} thumbnailUrl={entryState.thumbnailUrl} />
