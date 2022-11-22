@@ -5,33 +5,37 @@
  */
 
 import React, { useContext } from 'react';
-import { fileMap } from '../../extensions';
 
 import { DndEntryState,FileEntryProps } from '../../types/file-list.types';
 import { ChonkyIconContext } from '../../util/icon-helper';
 import { c, makeLocalChonkyStyles } from '../../util/styles';
-import { useDndIcon } from './FileEntry-hooks';
+import { useDndIcon,useFileEntryState } from './FileEntry-hooks';
+import { FileEntryState, useCommonEntryStyles } from './GridEntryPreview';
 
 export interface DnDIndicatorProps {
     className: string;
     dndState: DndEntryState;
-    entryState:FileEntryProps
+}
+interface StyleState {
+    className:string,
+    dndState: DndEntryState;
 }
 
-
-export const GridEntryDndIndicator: React.FC<DnDIndicatorProps> = React.memo(props => {
-    const { className: externalClassName, dndState } = props;
+export const GridEntryDndIndicator: React.FC<FileEntryProps> = React.memo( ({ file,dndState,selected, focused}) => {
+    //const { className: externalClassName, dndState } = props;
+    const entryState: FileEntryState = useFileEntryState(file, selected, focused);
     const dndIconName = useDndIcon(dndState);
     const classes = useStyles(dndState);
     const ChonkyIcon = useContext(ChonkyIconContext);
     if (!dndIconName) return null;
     const className = c({
         [classes.dndIndicator]: true,
-        [externalClassName]: true,
+        // [externalClassName]: true,
     });
     return (
         <div className={className}>
-            <ChonkyIcon icon={dndIconName} file={props.entryState}/>
+            <ChonkyIcon  icon={dndIconName ?? entryState.icon}
+                        spin={dndIconName ? false : entryState.iconSpin} file={file}/>
         </div>
     );
 });
