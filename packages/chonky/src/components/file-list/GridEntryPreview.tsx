@@ -33,7 +33,7 @@ export interface FileEntryPreviewProps {
 }
 
 export const GridEntryPreviewFolder: React.FC<FileEntryPreviewProps> = React.memo(props => {
-    const { className: externalClassName, entryState, dndState } = props;
+    const { className: externalClassName, entryState, dndState,file } = props;
 
     const folderClasses = useFolderStyles(entryState);
     const fileClasses = useFileStyles(entryState);
