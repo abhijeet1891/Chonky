@@ -123,7 +123,7 @@ export const DefaultActions = {
         button: {
             name: 'Switch to Grid view',
             toolbar: true,
-            icon: ChonkyIconName.list,
+            icon: ChonkyIconName.smallThumbnail,
             iconOnly: true,
         },
     } as const),

@@ -5,8 +5,9 @@
  */
 
 import React, { useContext } from 'react';
+import { fileMap } from '../../extensions';
 
-import { DndEntryState } from '../../types/file-list.types';
+import { DndEntryState,FileEntryProps } from '../../types/file-list.types';
 import { ChonkyIconContext } from '../../util/icon-helper';
 import { c, makeLocalChonkyStyles } from '../../util/styles';
 import { useDndIcon } from './FileEntry-hooks';
@@ -14,7 +15,9 @@ import { useDndIcon } from './FileEntry-hooks';
 export interface DnDIndicatorProps {
     className: string;
     dndState: DndEntryState;
+    entryState:FileEntryProps
 }
+
 
 export const GridEntryDndIndicator: React.FC<DnDIndicatorProps> = React.memo(props => {
     const { className: externalClassName, dndState } = props;
@@ -28,7 +31,7 @@ export const GridEntryDndIndicator: React.FC<DnDIndicatorProps> = React.memo(pro
     });
     return (
         <div className={className}>
-            <ChonkyIcon icon={dndIconName} />
+            <ChonkyIcon icon={dndIconName} file={props.entryState}/>
         </div>
     );
 });
