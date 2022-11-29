@@ -20,7 +20,7 @@ interface StyleState {
 }
 
 export const ListEntry: React.FC<FileEntryProps> = React.memo(
-    ({ file, selected, focused, dndState,  activeStar, deactivateStar, tags }) => {
+    ({ file, selected, focused, dndState,  activeStar, deactivateStar, tags, sharedOrPrivate }) => {
         const entryState: FileEntryState = useFileEntryState(file, selected, focused);
         const dndIconName = useDndIcon(dndState);
 
@@ -48,16 +48,16 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                     ])}
                 ></div>
                 
-                    <div className={classes.listFileEntryStar}>
-                    {!file?.isDir ? (
-                        <>
-                        <div className={file?.id ? file.id: ''} data-row-id={file?.id ? file.id: ''}>
-                        {file?.isStarred ? activeStar : deactivateStar}
-                        </div>
-                        </>
-                        ) : null
-                    }
+                <div className={classes.listFileEntryStar}>
+                {!file?.isDir ? (
+                    <>
+                    <div className={file?.id ? file.id: ''} data-row-id={file?.id ? file.id: ''}>
+                    {file?.isStarred ? activeStar : deactivateStar}
                     </div>
+                    </>
+                    ) : null
+                }
+                </div>
                     
                 <div className={classes.listFileEntryIcon}>
                     <ChonkyIcon
@@ -94,7 +94,8 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                     )}
                 </div>
                 <div className={classes.listFileShared}>
-                    {file?.isShared ? 'Shared': 'Private'}
+                    {/* {file?.isShared ? 'Shared': 'Private'} */}
+                    {file?.isShared ? sharedOrPrivate?.sharedText: sharedOrPrivate?.privateText}
                 </div>
             </div>
         );

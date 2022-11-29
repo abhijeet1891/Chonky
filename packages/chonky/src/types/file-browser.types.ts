@@ -184,4 +184,8 @@ export interface FileBrowserProps {
      * React element
      */
     tags: React.ReactElement<any, any>;
+    sharedOrPrivate?: {
+        sharedText: string;
+        privateText: string;
+    };
 }

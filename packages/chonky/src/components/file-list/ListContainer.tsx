@@ -21,10 +21,14 @@ export interface FileListListProps {
     activeStar: React.ReactElement<any, any>;
     deactivateStar: React.ReactElement<any, any>;
     tags: React.ReactElement<any, any>;
+    sharedOrPrivate?: {
+        sharedText: string;
+        privateText: string;
+    };
 }
 
 export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
-    const { width, height, fileListStyle = { height: 0 }, activeStar, deactivateStar, tags } = props;
+    const { width, height, fileListStyle = { height: 0 }, activeStar, deactivateStar, tags, sharedOrPrivate } = props;
 
     const viewConfig = useSelector(selectFileViewConfig);
 
@@ -50,6 +54,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
                         activeStar={activeStar}
                         deactivateStar={deactivateStar}
                         tags={tags}
+                        sharedOrPrivate={sharedOrPrivate}
                     />
                 </div>
             );
