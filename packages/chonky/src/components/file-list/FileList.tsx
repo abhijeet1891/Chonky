@@ -72,19 +72,20 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
             } else if (viewConfig.mode === FileViewMode.List) {
                 return (
                     <>
-                    <div className="">
+                    <div className="list-header">
                         <div className="listFileEntryStar"></div>
 
                         <div className="listFileEntryIcon"></div>
                         <div className="listFileEntryName">
-                        {listHeader}
+                        {listHeader ? listHeader?.name :""}
+                      
                         </div>
                         {/* <div className="listFileSearch">path</div> */}
                         <div className="listFileEntryProperty">
-                        
+                        {listHeader ? listHeader?.modified :""}
                         </div>
                         <div className="listFileShared">
-                    
+                        {listHeader ? listHeader?.sharing :""}
                         </div>
                     </div>
                       <div className='lisitemView'>
