@@ -68,12 +68,13 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
 
     const listRenderer = useCallback(
         ({ width, height }: { width: number; height: number }) => {
+            headerClasses.listFileEntry.width = {width}+'px';
             if (displayFileIds.length === 0) {
                 return <FileListEmpty width={width} height={viewConfig.entryHeight} />;
             } else if (viewConfig.mode === FileViewMode.List) {
                 return (
                     <>
-                    <div className={"list-header "+headerClasses.listFileEntry+width}>
+                    <div className={"list-header "+headerClasses.listFileEntry}>
                         <div className={headerClasses.listFileEntryStar}></div>
 
                         <div className={headerClasses.listFileEntryIcon}></div>
@@ -204,6 +205,7 @@ const useHeaderStyles = makeLocalChonkyStyles(theme => ({
         display: 'flex',
         height: '100%',
         minHeight: "30px",
+        width:'0',
     },
     listFileEntrySelection: {
         opacity: 0.6,
