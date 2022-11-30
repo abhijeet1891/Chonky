@@ -203,6 +203,7 @@ const useHeaderStyles = makeLocalChonkyStyles(theme => ({
         position: 'relative',
         display: 'flex',
         height: '100%',
+        minHeight: "30px",
     },
     listFileEntrySelection: {
         opacity: 0.6,
