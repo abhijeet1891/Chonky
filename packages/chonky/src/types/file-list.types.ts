@@ -16,4 +16,8 @@ export interface FileEntryProps {
     activeStar?: React.ReactElement<any, any>;
     deactivateStar?: React.ReactElement<any, any>;
     tags?: React.ReactElement<any, any>;
+    sharedOrPrivate?: {
+        sharedText: string;
+        privateText: string;
+    };
 }
