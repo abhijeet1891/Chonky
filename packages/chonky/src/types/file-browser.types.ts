@@ -188,4 +188,10 @@ export interface FileBrowserProps {
         sharedText: string;
         privateText: string;
     };
+    listHeader?: {
+        name: string;
+        location: string;
+        modified:string;
+        sharing:string;
+    };
 }

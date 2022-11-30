@@ -30,6 +30,12 @@ export interface SmartFileEntryProps {
         sharedText: string;
         privateText: string;
     };
+    listHeader?: {
+        name: string;
+        location: string;
+        modified:string;
+        sharing:string;
+    };
 }
 
 const disabledDndState: DndEntryState = {
@@ -39,7 +45,7 @@ const disabledDndState: DndEntryState = {
 };
 
 export const SmartFileEntry: React.FC<SmartFileEntryProps> = React.memo(
-    ({ fileId, displayIndex, fileViewMode, activeStar, deactivateStar, tags, sharedOrPrivate }) => {
+    ({ fileId, displayIndex, fileViewMode, activeStar, deactivateStar, tags, sharedOrPrivate,listHeader }) => {
         const classes = useStyles();
 
         // Basic properties
@@ -66,6 +72,7 @@ export const SmartFileEntry: React.FC<SmartFileEntryProps> = React.memo(
             deactivateStar,
             tags,
             sharedOrPrivate,
+            listHeader,
         };
 
         let EntryComponent: React.FC<FileEntryProps>;

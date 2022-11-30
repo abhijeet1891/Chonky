@@ -73,6 +73,7 @@ const App = () => {
                 deactivateStar={<div>deactivate Start</div>}
                 tags={<div>Good</div>}
                 sharedOrPrivate={{sharedText: "", privateText: ""}}
+                listHeader={{name:"",location:"",modified:"",sharing:""}}
             />
         </div>
     );
