@@ -137,7 +137,7 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
                     />
                 </div>
             </div>
-            <AutoSizer disableHeight={!fillParentContainer}>{listRenderer}</AutoSizer>
+          <div className='parentlist'>  <AutoSizer disableHeight={!fillParentContainer} disableWidth={true}>{listRenderer}</AutoSizer></div>
         </div>
     );
 });
