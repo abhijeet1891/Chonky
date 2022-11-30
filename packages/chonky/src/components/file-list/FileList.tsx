@@ -58,6 +58,7 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
 
     const localClasses = useLocalStyles(styleState);
     const classes = useStyles(viewConfig);
+    const headerClasses =useHeaderStyles();
     const { onScroll, fileListStyle, activeStar, deactivateStar, tags, sharedOrPrivate,listHeader } = props;
 
     // In Chonky v0.x, this field was user-configurable. In Chonky v1.x+, we hardcode
@@ -72,21 +73,20 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
             } else if (viewConfig.mode === FileViewMode.List) {
                 return (
                     <>
-                    <div className="list-header">
-                        <div className="listFileEntryStar"></div>
+                    <div className={"list-header "+headerClasses.listFileEntry}>
+                        <div className={headerClasses.listFileEntryStar}></div>
 
-                        <div className="listFileEntryIcon"></div>
-                        <div className="listFileEntryName">
+                        <div className={headerClasses.listFileEntryIcon}></div>
+                        <div className={headerClasses.listFileEntryName}>
                         {listHeader ? listHeader?.name :""}
-                      
                         </div>
-                        <div className="listFileLocation">
+                        <div className={headerClasses.listFileEntryLocation}>
                             <span> {listHeader ? listHeader?.location :""}</span>
                         </div>
-                        <div className="listFileEntryProperty">
+                        <div className={headerClasses.listFileEntryProperty}>
                         {listHeader ? listHeader?.modified :""}
                         </div>
-                        <div className="listFileShared">
+                        <div className={headerClasses.listFileEntryShared}>
                         {listHeader ? listHeader?.sharing :""}
                         </div>
                     </div>
@@ -192,5 +192,78 @@ const useStyles = makeGlobalChonkyStyles(() => ({
     fileListWrapper: {
         height: '100%',
         maxHeight: '100%',
+    },
+}));
+const useHeaderStyles = makeLocalChonkyStyles(theme => ({
+    listFileEntry: {
+        boxShadow: `inset ${theme.palette.divider} 0 -1px 0`,
+        fontSize: theme.listFileEntry.fontSize,
+        color:'inherit',
+        alignItems: 'center',
+        position: 'relative',
+        display: 'flex',
+        height: '100%',
+    },
+    listFileEntrySelection: {
+        opacity: 0.6,
+    },
+    listFileEntryStar: {
+        fontSize: theme.listFileEntry.iconFontSize,
+        boxSizing: 'border-box',
+        padding: [2, 4],
+        zIndex: 20,
+    },
+    listFileShared: {},
+    listFileEntryIcon: {
+        fontSize: theme.listFileEntry.iconFontSize,
+        boxSizing: 'border-box',
+        padding: [2, 4],
+        zIndex: 20,
+    },
+    listFileSearch: {},
+    listFileEntryName: {
+        textOverflow: 'ellipsis',
+        boxSizing: 'border-box',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        flex: '1 1 300px',
+        paddingLeft: 8,
+        zIndex: 20,
+    },
+    listFileEntryLocation: {
+        fontSize: theme.listFileEntry.propertyFontSize,
+        boxSizing: 'border-box',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        flex: '0 1 150px',
+        padding: [2, 8],
+        zIndex: 20,
+    },
+    listFileEntryProperty: {
+        fontSize: theme.listFileEntry.propertyFontSize,
+        boxSizing: 'border-box',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        flex: '0 1 150px',
+        padding: [2, 8],
+        zIndex: 20,
+    },
+    listFileEntryShared: {
+        fontSize: theme.listFileEntry.propertyFontSize,
+        boxSizing: 'border-box',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        flex: '0 1 150px',
+        padding: [2, 8],
+        zIndex: 20,
+    },
+    listFileSizeProperty: {
+        fontSize: theme.listFileEntry.propertyFontSize,
+        boxSizing: 'border-box',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        flex: '0 1 150px',
+        padding: [2, 8],
+        zIndex: 20,
     },
 }));
