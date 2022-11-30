@@ -73,7 +73,7 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
             } else if (viewConfig.mode === FileViewMode.List) {
                 return (
                     <>
-                    <div className={"list-header "+headerClasses.listFileEntry}>
+                    <div className={"list-header "+headerClasses.listFileEntry+width}>
                         <div className={headerClasses.listFileEntryStar}></div>
 
                         <div className={headerClasses.listFileEntryIcon}></div>
