@@ -80,7 +80,9 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
                         {listHeader ? listHeader?.name :""}
                       
                         </div>
-                        {/* <div className="listFileSearch">path</div> */}
+                        <div className="listFileLocation">
+                            <span> {listHeader ? listHeader?.location :""}</span>
+                        </div>
                         <div className="listFileEntryProperty">
                         {listHeader ? listHeader?.modified :""}
                         </div>
