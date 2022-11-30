@@ -65,7 +65,8 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
                 return <FileListEmpty width={width} height={viewConfig.entryHeight} />;
             } else if (viewConfig.mode === FileViewMode.List) {
                 return (
-                    <ListContainer
+                   <div className='lisitemView'>
+                     <ListContainer
                         width={width}
                         height={height}
                         fileListStyle={fileListStyle}
@@ -74,6 +75,7 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
                         tags={tags}
                         sharedOrPrivate={sharedOrPrivate}
                     />
+                   </div>
                 );
             } else {
                 return (
