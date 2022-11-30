@@ -121,7 +121,15 @@ const useStyles = makeLocalChonkyStyles(theme => ({
         opacity: 0.6,
     },
     listFileEntryStar: {},
-    listFileShared: {},
+    listFileShared: {
+        fontSize: theme.listFileEntry.propertyFontSize,
+        boxSizing: 'border-box',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        flex: '0 1 120px',
+        padding: [2, 8],
+        zIndex: 20,
+    },
     listFileEntryIcon: {
         color: ({ entryState, dndState }: StyleState) =>
             dndState.dndIsOver
@@ -134,7 +142,15 @@ const useStyles = makeLocalChonkyStyles(theme => ({
         padding: [2, 4],
         zIndex: 20,
     },
-    listFileSearch: {},
+    listFileSearch: {
+        fontSize: theme.listFileEntry.propertyFontSize,
+        boxSizing: 'border-box',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        flex: '0 1 200px',
+        padding: [2, 8],
+        zIndex: 20,
+    },
     listFileEntryName: {
         textOverflow: 'ellipsis',
         boxSizing: 'border-box',
