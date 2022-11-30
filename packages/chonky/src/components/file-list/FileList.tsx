@@ -83,13 +83,14 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
                         <div className={headerClasses.listFileEntryName}>
                         {listHeader ? listHeader?.name :""}
                         </div>
-                        <div className={headerClasses.listFileEntryLocation}>
-                            <span> {listHeader ? listHeader?.location :""}</span>
-                        </div>
+                        {listHeader?.location && <div className={headerClasses.listFileSearch}>
+                            {listHeader ? listHeader?.location :""}
+                        </div>}
+                       
                         <div className={headerClasses.listFileEntryProperty}>
                         {listHeader ? listHeader?.modified :""}
                         </div>
-                        <div className={headerClasses.listFileEntryShared}>
+                        <div className={headerClasses.listFileShared}>
                         {listHeader ? listHeader?.sharing :""}
                         </div>
                     </div>
@@ -217,14 +218,12 @@ const useHeaderStyles = makeLocalChonkyStyles(theme => ({
         padding: [2, 4],
         zIndex: 20,
     },
-    listFileShared: {},
     listFileEntryIcon: {
         fontSize: theme.listFileEntry.iconFontSize,
         boxSizing: 'border-box',
         padding: [2, 4],
         zIndex: 20,
     },
-    listFileSearch: {},
     listFileEntryName: {
         textOverflow: 'ellipsis',
         boxSizing: 'border-box',
@@ -234,7 +233,7 @@ const useHeaderStyles = makeLocalChonkyStyles(theme => ({
         paddingLeft: 8,
         zIndex: 20,
     },
-    listFileEntryLocation: {
+    listFileSearch: {
         fontSize: theme.listFileEntry.propertyFontSize,
         boxSizing: 'border-box',
         whiteSpace: 'nowrap',
@@ -252,7 +251,7 @@ const useHeaderStyles = makeLocalChonkyStyles(theme => ({
         padding: [2, 8],
         zIndex: 20,
     },
-    listFileEntryShared: {
+    listFileShared: {
         fontSize: theme.listFileEntry.propertyFontSize,
         boxSizing: 'border-box',
         whiteSpace: 'nowrap',
