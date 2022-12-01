@@ -36,6 +36,7 @@ export interface SmartFileEntryProps {
         modified:string;
         sharing:string;
     };
+    
 }
 
 const disabledDndState: DndEntryState = {

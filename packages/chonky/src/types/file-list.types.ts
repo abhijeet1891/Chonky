@@ -1,5 +1,5 @@
 import { Nullable } from 'tsdef';
-
+import { ElementType, UIEvent, CSSProperties } from 'react';
 import { FileData } from './file.types';
 
 export interface DndEntryState {
@@ -26,4 +26,5 @@ export interface FileEntryProps {
         modified:string;
         sharing:string;
     };
+    rowClickHandler?: (e: UIEvent<HTMLDivElement>) => void;
 }

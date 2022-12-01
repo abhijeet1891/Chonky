@@ -194,4 +194,5 @@ export interface FileBrowserProps {
         modified:string;
         sharing:string;
     };
+    rowClickHandler?:Nullable<GenericFileActionHandler<ChonkyActionUnion>>;
 }

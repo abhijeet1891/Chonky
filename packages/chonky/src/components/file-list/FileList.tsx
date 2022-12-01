@@ -38,6 +38,7 @@ export interface FileListProps {
         modified:string;
         sharing:string;
     };
+    rowClickHandler?: (e: UIEvent<HTMLDivElement>) => void;
 }
 
 interface StyleState {
@@ -59,7 +60,7 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
     const localClasses = useLocalStyles(styleState);
     const classes = useStyles(viewConfig);
     const headerClasses =useHeaderStyles();
-    const { onScroll, fileListStyle, activeStar, deactivateStar, tags, sharedOrPrivate,listHeader } = props;
+    const { onScroll, fileListStyle, activeStar, deactivateStar, tags, sharedOrPrivate,listHeader,rowClickHandler } = props;
 
     // In Chonky v0.x, this field was user-configurable. In Chonky v1.x+, we hardcode
     // this to `true` to simplify configuration. Users can just wrap Chonky in their
@@ -104,6 +105,7 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
                         tags={tags}
                         sharedOrPrivate={sharedOrPrivate}
                         listHeader={listHeader}
+                        rowClickHandler={rowClickHandler}
                     />
                    </div>
                     </>

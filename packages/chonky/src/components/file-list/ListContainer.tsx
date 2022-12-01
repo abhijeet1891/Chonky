@@ -4,7 +4,7 @@
  * @license MIT
  */
 
-import React, { CSSProperties, useCallback, useMemo, useRef } from 'react';
+import React, { CSSProperties, useCallback, useMemo, useRef,UIEvent } from 'react';
 import { useSelector } from 'react-redux';
 import { FixedSizeList } from 'react-window';
 
@@ -31,10 +31,11 @@ export interface FileListListProps {
         modified:string;
         sharing:string;
     };
+    rowClickHandler?: (e: UIEvent<HTMLDivElement>) => void;
 }
 
 export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
-    const { width, height, fileListStyle = { height: 0 }, activeStar, deactivateStar, tags, sharedOrPrivate,listHeader } = props;
+    const { width, height, fileListStyle = { height: 0 }, activeStar, deactivateStar, tags, sharedOrPrivate,listHeader,rowClickHandler } = props;
 
     const viewConfig = useSelector(selectFileViewConfig);
 
@@ -52,7 +53,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
         // When entry size is null, we use List view
         const rowRenderer = (data: { index: number; style: CSSProperties }) => {
             return (
-                <div style={{ ...data.style  }}>
+                <div style={{ ...data.style  }} onClick={rowClickHandler}>
                     <SmartFileEntry
                         fileId={displayFileIds[data.index] ?? null}
                         displayIndex={data.index}
