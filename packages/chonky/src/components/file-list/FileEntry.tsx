@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,UIEvent } from 'react';
 import { useSelector } from 'react-redux';
 import { Nullable } from 'tsdef';
 
@@ -36,7 +36,7 @@ export interface SmartFileEntryProps {
         modified:string;
         sharing:string;
     };
-    
+    rowClickHandler?: (e: UIEvent<HTMLDivElement>) => void;
 }
 
 const disabledDndState: DndEntryState = {
@@ -46,7 +46,7 @@ const disabledDndState: DndEntryState = {
 };
 
 export const SmartFileEntry: React.FC<SmartFileEntryProps> = React.memo(
-    ({ fileId, displayIndex, fileViewMode, activeStar, deactivateStar, tags, sharedOrPrivate,listHeader }) => {
+    ({ fileId, displayIndex, fileViewMode, activeStar, deactivateStar, tags, sharedOrPrivate,listHeader,rowClickHandler }) => {
         const classes = useStyles();
 
         // Basic properties
@@ -74,6 +74,7 @@ export const SmartFileEntry: React.FC<SmartFileEntryProps> = React.memo(
             tags,
             sharedOrPrivate,
             listHeader,
+            rowClickHandler
         };
 
         let EntryComponent: React.FC<FileEntryProps>;

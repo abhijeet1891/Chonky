@@ -74,6 +74,7 @@ const App = () => {
                 tags={<div>Good</div>}
                 sharedOrPrivate={{sharedText: "", privateText: ""}}
                 listHeader={{name:"",location:"",modified:"",sharing:""}}
+                rowClickHandler={<div>Good</div>}
             />
         </div>
     );
