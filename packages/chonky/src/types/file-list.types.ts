@@ -26,5 +26,5 @@ export interface FileEntryProps {
         modified:string;
         sharing:string;
     };
-    rowClickHandler?: (e: UIEvent<HTMLDivElement>) => void;
+    moreToolAction?: React.ReactElement<any, any>;
 }

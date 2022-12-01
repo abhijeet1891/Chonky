@@ -31,11 +31,11 @@ export interface FileListListProps {
         modified:string;
         sharing:string;
     };
-    rowClickHandler?: (e: UIEvent<HTMLDivElement>) => void;
+    moreToolAction?: React.ReactElement<any, any>;
 }
 
 export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
-    const { width, height, fileListStyle = { height: 0 }, activeStar, deactivateStar, tags, sharedOrPrivate,listHeader,rowClickHandler } = props;
+    const { width, height, fileListStyle = { height: 0 }, activeStar, deactivateStar, tags, sharedOrPrivate,listHeader,moreToolAction } = props;
 
     const viewConfig = useSelector(selectFileViewConfig);
 
@@ -53,7 +53,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
         // When entry size is null, we use List view
         const rowRenderer = (data: { index: number; style: CSSProperties }) => {
             return (
-                <div style={{ ...data.style  }}>
+                <div style={{ ...data.style  }} className="row-item">
                     <SmartFileEntry
                         fileId={displayFileIds[data.index] ?? null}
                         displayIndex={data.index}
@@ -63,7 +63,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
                         tags={tags}
                         sharedOrPrivate={sharedOrPrivate}
                         listHeader={listHeader}
-                        rowClickHandler={rowClickHandler}
+                        moreToolAction={moreToolAction}
                     />
                 </div>
             );

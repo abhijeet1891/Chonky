@@ -194,5 +194,5 @@ export interface FileBrowserProps {
         modified:string;
         sharing:string;
     };
-    rowClickHandler?: (e: UIEvent<HTMLDivElement>) => void;
+    moreToolAction?: React.ReactElement<any, any>;
 }
