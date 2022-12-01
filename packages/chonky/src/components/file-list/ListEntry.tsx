@@ -20,7 +20,7 @@ interface StyleState {
 }
 
 export const ListEntry: React.FC<FileEntryProps> = React.memo(
-    ({ file, selected, focused, dndState,  activeStar, deactivateStar, tags, sharedOrPrivate }) => {
+    ({ file, selected, focused, dndState,  activeStar, deactivateStar, tags, sharedOrPrivate,rowClickHandler }) => {
         const entryState: FileEntryState = useFileEntryState(file, selected, focused);
         const dndIconName = useDndIcon(dndState);
 
@@ -97,6 +97,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                     {/* {file?.isShared ? 'Shared': 'Private'} */}
                     {file?.isShared ? sharedOrPrivate?.sharedText: sharedOrPrivate?.privateText}
                 </div>
+                <div className='more-actions' onClick={rowClickHandler}></div>
             </div>
         );
     }

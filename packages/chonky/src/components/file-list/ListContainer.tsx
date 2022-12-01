@@ -53,7 +53,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
         // When entry size is null, we use List view
         const rowRenderer = (data: { index: number; style: CSSProperties }) => {
             return (
-                <div style={{ ...data.style  }} onClick={rowClickHandler} className="row-item">
+                <div style={{ ...data.style  }}>
                     <SmartFileEntry
                         fileId={displayFileIds[data.index] ?? null}
                         displayIndex={data.index}
@@ -63,6 +63,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
                         tags={tags}
                         sharedOrPrivate={sharedOrPrivate}
                         listHeader={listHeader}
+                        rowClickHandler={rowClickHandler}
                     />
                 </div>
             );
