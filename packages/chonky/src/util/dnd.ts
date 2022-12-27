@@ -131,7 +131,7 @@ export const useFileDrop = ({
             if (
                 forceDisableDrop ||
                 !FileHelper.isDroppable(file) ||
-                (!monitor.isOver({ shallow: true }) && !includeChildrenDrops)
+                (!monitor.isOver({ shallow: true }) && false)
             ) {
                 return false;
             }
