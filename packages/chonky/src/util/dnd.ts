@@ -133,10 +133,8 @@ export const useFileDrop = ({
                 !FileHelper.isDroppable(file) ||
                 (!monitor.isOver({ shallow: true }) && !includeChildrenDrops)
             ) {
-                console.log("inside");
-                return true;
+                return false;
             }
-            console.log("outside");
             const { source, draggedFile, selectedFiles } = item.payload;
 
             // We prevent folders from being dropped into themselves. We also prevent
