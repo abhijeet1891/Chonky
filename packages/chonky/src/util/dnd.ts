@@ -57,14 +57,14 @@ export const useFileDrag = (file: Nullable<FileData>) => {
     const onDragEnd = useCallback(
         (item: ChonkyDndFileEntryItem, monitor: DragSourceMonitor) => {
             const dropResult = monitor.getDropResult() as ChonkyDndDropResult;
-            // if (
-            //     !FileHelper.isDraggable(item.payload.draggedFile) ||
-            //     !dropResult ||
-            //     !dropResult.dropTarget
-            // ) {
-            //     return;
-            // }
-            console.log("item.payload.draggedFile",item.payload);
+            if (
+                !FileHelper.isDraggable(item.payload.draggedFile) ||
+                !dropResult ||
+                !dropResult.dropTarget
+            ) {
+                return;
+            }
+
             dispatch(
                 thunkRequestFileAction(ChonkyActions.EndDragNDrop, {
                     ...item.payload,
