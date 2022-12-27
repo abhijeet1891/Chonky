@@ -128,9 +128,6 @@ export const useFileDrop = ({
     );
     const canDrop = useCallback(
         (item: ChonkyDndFileEntryItem, monitor: DropTargetMonitor) => {
-            
-            console.log("forceDisableDropp",forceDisableDrop);
-            console.log("!FileHelper.isDroppable(file)",!FileHelper.isDroppable(file));
             if (
                 forceDisableDrop ||
                 !FileHelper.isDroppable(file) ||
@@ -139,7 +136,7 @@ export const useFileDrop = ({
                 return false;
             }
             const { source, draggedFile, selectedFiles } = item.payload;
-            //console.log("can drop",file);
+
             // We prevent folders from being dropped into themselves. We also prevent
             // any folder from current folder chain being moved - we can't move the
             // folder that we are currently in.
