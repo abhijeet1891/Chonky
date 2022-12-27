@@ -133,10 +133,11 @@ export const useFileDrop = ({
                 !FileHelper.isDroppable(file) ||
                 (!monitor.isOver({ shallow: true }) && !includeChildrenDrops)
             ) {
+                console.log("disble drop",file);
                 return false;
             }
             const { source, draggedFile, selectedFiles } = item.payload;
-
+            console.log("can drop",file);
             // We prevent folders from being dropped into themselves. We also prevent
             // any folder from current folder chain being moved - we can't move the
             // folder that we are currently in.
