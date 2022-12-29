@@ -128,14 +128,10 @@ export const useFileDrop = ({
     );
     const canDrop = useCallback(
         (item: ChonkyDndFileEntryItem, monitor: DropTargetMonitor) => {
-            console.log("forceDisableDrop",forceDisableDrop);
-            console.log("file",file);
-            console.log("!FileHelper.isDroppable(file)",!FileHelper.isDroppable(file));
-            console.log("!monitor.isOver()",!monitor.isOver());
             if (
                 forceDisableDrop ||
                 !FileHelper.isDroppable(file) ||
-                (!monitor.isOver())
+                (!monitor.isOver({ shallow: true }) && !includeChildrenDrops)
             ) {
                 return false;
             }
