@@ -195,4 +195,5 @@ export interface FileBrowserProps {
         sharing:string;
     };
     moreToolAction?: React.ReactElement<any, any>;
+    esignStatus: React.ReactElement<any, any>;
 }

@@ -32,10 +32,11 @@ export interface FileListListProps {
         sharing:string;
     };
     moreToolAction?: React.ReactElement<any, any>;
+    esignStatus: React.ReactElement<any, any>;
 }
 
 export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
-    const { width, height, fileListStyle = { height: 0 }, activeStar, deactivateStar, tags, sharedOrPrivate,listHeader,moreToolAction } = props;
+    const { width, height, fileListStyle = { height: 0 }, activeStar, deactivateStar, tags, sharedOrPrivate,listHeader,moreToolAction,esignStatus } = props;
 
     const viewConfig = useSelector(selectFileViewConfig);
 
@@ -64,6 +65,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
                         sharedOrPrivate={sharedOrPrivate}
                         listHeader={listHeader}
                         moreToolAction={moreToolAction}
+                        esignStatus={esignStatus}
                     />
                 </div>
             );

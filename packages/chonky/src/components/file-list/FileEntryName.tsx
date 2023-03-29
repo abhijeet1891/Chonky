@@ -15,12 +15,15 @@ export interface FileEntryNameProps {
     file: Nullable<FileData>;
     className?: string;
     tags?: React.ReactElement<any, any>;
+    esignStatus?: React.ReactElement<any, any>;
+    
 }
 
 export const FileEntryName: React.FC<FileEntryNameProps> = React.memo(({ file, className }) => {
     const modifierIconComponents = useModifierIconComponents(file);
     const fileNameComponent = useFileNameComponent(file);
     const fileTags = file?.tags?.split(",").filter((d:string) => Boolean(d));
+    const esignStatus = file?.envelope;
 
     const classes = useStyles();
     return (
@@ -37,6 +40,10 @@ export const FileEntryName: React.FC<FileEntryNameProps> = React.memo(({ file, c
                     ))}
                 </div>)
              : null}
+             {esignStatus != "" ? (  <div className="chonky-esign-status">
+             {esignStatus}
+                </div>) : null}
+              
         </span>
     );
 });

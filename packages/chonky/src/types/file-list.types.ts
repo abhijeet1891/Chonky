@@ -27,4 +27,5 @@ export interface FileEntryProps {
         sharing:string;
     };
     moreToolAction?: React.ReactElement<any, any>;
+    esignStatus?: React.ReactElement<any, any>;
 }

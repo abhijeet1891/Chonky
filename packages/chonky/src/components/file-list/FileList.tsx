@@ -39,6 +39,7 @@ export interface FileListProps {
         sharing:string;
     };
     moreToolAction?:  React.ReactElement<any, any>;
+    esignStatus: React.ReactElement<any, any>;
 }
 
 interface StyleState {
@@ -60,7 +61,7 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
     const localClasses = useLocalStyles(styleState);
     const classes = useStyles(viewConfig);
     const headerClasses =useHeaderStyles();
-    const { onScroll, fileListStyle, activeStar, deactivateStar, tags, sharedOrPrivate,listHeader,moreToolAction } = props;
+    const { onScroll, fileListStyle, activeStar, deactivateStar, tags, sharedOrPrivate,listHeader,moreToolAction,esignStatus } = props;
 
     // In Chonky v0.x, this field was user-configurable. In Chonky v1.x+, we hardcode
     // this to `true` to simplify configuration. Users can just wrap Chonky in their
@@ -106,6 +107,7 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
                         sharedOrPrivate={sharedOrPrivate}
                         listHeader={listHeader}
                         moreToolAction={moreToolAction}
+                        esignStatus={esignStatus}
                     />
                    </div>
                     </>

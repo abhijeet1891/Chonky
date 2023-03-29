@@ -20,7 +20,7 @@ interface StyleState {
 }
 
 export const ListEntry: React.FC<FileEntryProps> = React.memo(
-    ({ file, selected, focused, dndState,  activeStar, deactivateStar, tags, sharedOrPrivate,moreToolAction }) => {
+    ({ file, selected, focused, dndState,  activeStar, deactivateStar, tags, sharedOrPrivate,moreToolAction,esignStatus }) => {
         const entryState: FileEntryState = useFileEntryState(file, selected, focused);
         const dndIconName = useDndIcon(dndState);
 
@@ -71,7 +71,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                     className={classes.listFileEntryName}
                     // title={file ? file.name : undefined}
                 >
-                    <FileEntryName file={file} tags={tags} />
+                    <FileEntryName file={file} tags={tags} esignStatus={esignStatus}/>
                 </div>
                 {file?.isSearchResults && file?.folderPath ? (
                     <div className={classes.listFileSearch}>
