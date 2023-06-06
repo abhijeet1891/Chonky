@@ -78,7 +78,6 @@ const App = () => {
                 sharedOrPrivate={{sharedText: "", privateText: ""}}
                 listHeader={{name:"",location:"",modified:"",sharing:""}}
                 moreToolAction={<div>moreToolAction</div>}
-                ondblclick={(e) => onDoubleClickHandler(e)}
             />
         </div>
     );
