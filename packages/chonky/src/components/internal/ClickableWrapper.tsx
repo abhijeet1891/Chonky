@@ -63,7 +63,7 @@ export const ClickableWrapper: React.FC<ClickableWrapperProps> = props => {
 
     if (onSingleClick || onDoubleClick || onKeyboardClick) {
         compProps.onClick = handleClick;
-        compProps.ondblclick=handleDoubleClick;
+        compProps.onDoubleClick=handleDoubleClick;
         compProps.onKeyDown = handleKeyDown;
         compProps.tabIndex = 0;
     }

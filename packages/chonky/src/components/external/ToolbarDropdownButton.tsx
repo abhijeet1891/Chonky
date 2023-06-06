@@ -24,13 +24,13 @@ export interface ToolbarDropdownButtonProps {
     active?: boolean;
     icon?: Nullable<ChonkyIconName | string>;
     onClick?: () => void;
-    ondblclick?:()=>void;
+    onDoubleClick?:()=>void;
     disabled?: boolean;
 }
 
 export const ToolbarDropdownButton = React.forwardRef(
     (props: ToolbarDropdownButtonProps, ref: React.Ref<HTMLLIElement>) => {
-        const { text, active, icon, onClick,ondblclick, disabled } = props;
+        const { text, active, icon, onClick,onDoubleClick, disabled } = props;
         const classes = useStyles();
         const ChonkyIcon = useContext(ChonkyIconContext);
 
