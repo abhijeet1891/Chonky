@@ -25,6 +25,7 @@ export interface ToolbarButtonProps {
     icon?: Nullable<ChonkyIconName | string>;
     iconOnly?: boolean;
     onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    ondblclick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
     disabled?: boolean;
     dropdown?: boolean;
 }
@@ -38,6 +39,7 @@ export const ToolbarButton: React.FC<ToolbarButtonProps> = React.memo(props => {
         icon,
         iconOnly,
         onClick,
+        ondblclick,
         disabled,
         dropdown,
     } = props;

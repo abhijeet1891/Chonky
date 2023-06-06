@@ -12,6 +12,7 @@ export interface FolderChainItem {
     file: Nullable<FileData>;
     disabled: boolean;
     onClick?: () => void;
+    ondblclick?: () => void;
 }
 
 export const useFolderChainItems = (): FolderChainItem[] => {

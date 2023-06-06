@@ -13,12 +13,12 @@ import {
     KeyboardClickEvent,
     KeyboardClickEventHandler,
     MouseClickEvent,
-    MouseClickEventHandler,
+    MouseClickEventHandler,MouseDoubleClickEventHandler
 } from './ClickableWrapper';
 
 export const useClickHandler = (
     onSingleClick: Nilable<MouseClickEventHandler>,
-    onDoubleClick: Nilable<MouseClickEventHandler>
+    onDoubleClick: Nilable<MouseDoubleClickEventHandler>
 ) => {
     const doubleClickDelay = useSelector(selectDoubleClickDelay);
 
@@ -61,6 +61,40 @@ export const useClickHandler = (
             }
         },
         [doubleClickDelay, onSingleClick, onDoubleClick, counter]
+    );
+};
+export const useDoubleClickHandler = (
+    onDoubleClick: Nilable<MouseDoubleClickEventHandler>
+) => {
+    const doubleClickDelay = useSelector(selectDoubleClickDelay);
+
+    const counter = useRef({
+        clickCount: 0,
+        clickTimeout: null as Nullable<number>,
+    });
+
+    return useCallback(
+        (event: React.MouseEvent) => {
+            const mouseClickEvent: MouseClickEvent = {
+                altKey: event.altKey,
+                ctrlKey: event.ctrlKey || event.metaKey,
+                shiftKey: event.shiftKey,
+
+            };
+            counter.current.clickCount++;
+           if (counter.current.clickCount === 2) {
+                if (onDoubleClick) {
+                    event.preventDefault();
+                    onDoubleClick(mouseClickEvent);
+                }
+                if (typeof counter.current.clickTimeout === 'number') {
+                    clearTimeout(counter.current.clickTimeout);
+                    counter.current.clickTimeout = null;
+                    counter.current.clickCount = 0;
+                }
+            }
+        },
+        [doubleClickDelay, onDoubleClick, counter]
     );
 };
 

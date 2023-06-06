@@ -7,7 +7,7 @@
 import React, { useCallback } from 'react';
 import { AnyObjectWithStringKeys } from 'tsdef';
 
-import { useClickHandler, useKeyDownHandler } from './ClickableWrapper-hooks';
+import { useClickHandler, useKeyDownHandler,useDoubleClickHandler } from './ClickableWrapper-hooks';
 
 export interface MouseClickEvent {
     altKey: boolean;
@@ -53,6 +53,7 @@ export const ClickableWrapper: React.FC<ClickableWrapperProps> = props => {
     } = props;
 
     const handleClick = useClickHandler(onSingleClick, onDoubleClick);
+    const handleDoubleClick = useDoubleClickHandler(onDoubleClick);
     const handleKeyDown = useKeyDownHandler(onKeyboardClick);
 
     const compProps: AnyObjectWithStringKeys = {
@@ -62,6 +63,7 @@ export const ClickableWrapper: React.FC<ClickableWrapperProps> = props => {
 
     if (onSingleClick || onDoubleClick || onKeyboardClick) {
         compProps.onClick = handleClick;
+        compProps.ondblclick=handleDoubleClick;
         compProps.onKeyDown = handleKeyDown;
         compProps.tabIndex = 0;
     }
