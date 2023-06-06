@@ -28,4 +28,5 @@ export interface FileEntryProps {
     };
     moreToolAction?: React.ReactElement<any, any>;
     esignStatus?: React.ReactElement<any, any>;
+    ondblclick?: React.ReactElement<any, any>;
 }

@@ -61,7 +61,9 @@ const data = [
   { id: '16', name: 'Closure', isDir: true, focused: true, },
   { id: '17', name: 'Formation ', isDir: true, focused: true, },
 ];
+const onDoubleClickHandler = (e) => {
 
+};
 const App = () => {
     return (
         <div style={{ height: 400 }}>
@@ -76,6 +78,7 @@ const App = () => {
                 sharedOrPrivate={{sharedText: "", privateText: ""}}
                 listHeader={{name:"",location:"",modified:"",sharing:""}}
                 moreToolAction={<div>moreToolAction</div>}
+                ondblclick={(e) => onDoubleClickHandler(e)}
             />
         </div>
     );

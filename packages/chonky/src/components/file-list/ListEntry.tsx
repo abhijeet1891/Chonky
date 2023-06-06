@@ -20,7 +20,7 @@ interface StyleState {
 }
 
 export const ListEntry: React.FC<FileEntryProps> = React.memo(
-    ({ file, selected, focused, dndState,  activeStar, deactivateStar, tags, sharedOrPrivate,moreToolAction,esignStatus }) => {
+    ({ file, selected, focused, dndState,  activeStar, deactivateStar, tags, sharedOrPrivate,moreToolAction,esignStatus,ondblclick }) => {
         const entryState: FileEntryState = useFileEntryState(file, selected, focused);
         const dndIconName = useDndIcon(dndState);
 
@@ -39,7 +39,10 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
         const ChonkyIcon = useContext(ChonkyIconContext);
         const fileEntryHtmlProps = useFileEntryHtmlProps(file);
         return (
-            <div className={`${classes.listFileEntry} ${file?.isChecked ? 'is-checked': ''}`} {...fileEntryHtmlProps}>
+            <div className={`${classes.listFileEntry} ${file?.isChecked ? 'is-checked': ''}`} {...fileEntryHtmlProps} {...file?.isDir=== false ? (
+                ondblclick?ondblclick:""
+                ) : null
+            }>
                 <div className={commonClasses.focusIndicator}></div>
                 <div
                     className={c([
