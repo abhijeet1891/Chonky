@@ -14,7 +14,13 @@ export interface MouseClickEvent {
     ctrlKey: boolean;
     shiftKey: boolean;
 }
+export interface MouseDoubleClickEvent {
+    altKey: boolean;
+    ctrlKey: boolean;
+    shiftKey: boolean;
+}
 export type MouseClickEventHandler = (event: MouseClickEvent) => void;
+export type MouseDoubleClickEventHandler = (event: MouseDoubleClickEvent) => void;
 
 export interface KeyboardClickEvent {
     enterKey: boolean;
@@ -30,7 +36,7 @@ export interface ClickableWrapperProps {
     passthroughProps?: any;
 
     onSingleClick?: MouseClickEventHandler;
-    onDoubleClick?: MouseClickEventHandler;
+    onDoubleClick?: MouseDoubleClickEventHandler;
     onKeyboardClick?: KeyboardClickEventHandler;
     setFocused?: (focused: boolean) => void;
 }

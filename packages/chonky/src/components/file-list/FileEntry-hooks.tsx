@@ -14,7 +14,7 @@ import { FileHelper } from '../../util/file-helper';
 import { ChonkyIconContext, ColorsDark, ColorsLight, useIconData } from '../../util/icon-helper';
 import { Logger } from '../../util/logger';
 import { TextPlaceholder } from '../external/TextPlaceholder';
-import { KeyboardClickEvent, MouseClickEvent } from '../internal/ClickableWrapper';
+import { KeyboardClickEvent, MouseClickEvent,MouseDoubleClickEvent } from '../internal/ClickableWrapper';
 import { FileEntryState } from './GridEntryPreview';
 
 export const useFileEntryHtmlProps = (file: Nullable<FileData>): HTMLProps<HTMLDivElement> => {
@@ -163,7 +163,24 @@ export const useFileClickHandlers = (file: Nullable<FileData>, displayIndex: num
 
     // Prepare base handlers
     const onMouseClick = useCallback(
-        (event: MouseClickEvent, clickType: 'single' | 'double') => {
+        (event: MouseClickEvent, clickType: 'single') => {
+            if (!file) return;
+
+            dispatch(
+                thunkRequestFileAction(ChonkyActions.MouseClickFile, {
+                    clickType,
+                    file,
+                    fileDisplayIndex: displayIndex,
+                    altKey: event.altKey,
+                    ctrlKey: event.ctrlKey,
+                    shiftKey: event.shiftKey,
+                })
+            );
+        },
+        [dispatch, file, displayIndex]
+    );
+    const onMouseDoubleClick = useCallback(
+        (event: MouseDoubleClickEvent, clickType: 'double') => {
             if (!file) return;
 
             dispatch(
@@ -200,7 +217,7 @@ export const useFileClickHandlers = (file: Nullable<FileData>, displayIndex: num
 
     // Prepare single/double click handlers
     const onSingleClick = useCallback((event: MouseClickEvent) => onMouseClick(event, 'single'), [onMouseClick]);
-    const onDoubleClick = useCallback((event: MouseClickEvent) => onMouseClick(event, 'double'), [onMouseClick]);
+    const onDoubleClick = useCallback((event: MouseDoubleClickEvent) => onMouseDoubleClick(event, 'double'), [onMouseDoubleClick]);
 
     return {
         onSingleClick,
