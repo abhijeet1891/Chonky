@@ -61,7 +61,7 @@ export const SmartFileEntry: React.FC<SmartFileEntryProps> = React.memo(
         const clickableWrapperProps: ClickableWrapperProps = {
             wrapperTag: 'div',
             passthroughProps: { className: classes.fileEntryClickableWrapper },
-            ...(FileHelper.isClickable(file) ? fileClickHandlers : fileClickHandlers),
+            ...(FileHelper.isClickable(file) ? fileClickHandlers : undefined),
             setFocused,
         };
 
