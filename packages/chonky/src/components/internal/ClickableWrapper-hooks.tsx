@@ -37,7 +37,6 @@ export const useClickHandler = (
                 detail:event.detail
             };
             counter.current.clickCount++;
-            Logger.debug(`mouseClickEvent.detail`, mouseClickEvent.detail);
             if (counter.current.clickCount === 1 && mouseClickEvent.detail === 1) {
                 if (onSingleClick) {
                     event.preventDefault();
@@ -45,10 +44,10 @@ export const useClickHandler = (
                 }
                 counter.current.clickCount = 1;
                 // @ts-ignore
-                // counter.current.clickTimeout = setTimeout(
-                //     () => (counter.current.clickCount = 0),
-                //     doubleClickDelay
-                // );
+                counter.current.clickTimeout = setTimeout(
+                    () => (counter.current.clickCount = 0),
+                    doubleClickDelay
+                );
             }
             else if( mouseClickEvent.detail > 1){
                 event.preventDefault();
@@ -95,7 +94,6 @@ export const useDoubleClickHandler = (
                 shiftKey: event.shiftKey,
                 detail:event.detail
             };
-            Logger.debug(`mousedoubleClickEvent.detail`, mouseClickEvent.detail);
             counter.current.clickCount++;
            if (counter.current.clickCount === 2) {
                 if (onDoubleClick) {
