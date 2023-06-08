@@ -28,19 +28,19 @@ export const FileEntryName: React.FC<FileEntryNameProps> = React.memo(({ file, c
     const classes = useStyles();
     return (
         // <span className={className} title={file ? file.name : undefined}>
-             <span className={className}>
+             <span className={className} data-chonky-file-id={file?.id ? file.id: ''}>
             {modifierIconComponents.length > 0 && (
-                <span className={classes.modifierIcons}>{modifierIconComponents}</span>
+                <span className={classes.modifierIcons} data-chonky-file-id={file?.id ? file.id: ''}>{modifierIconComponents}</span>
             )}
             {fileNameComponent}
             {fileTags?.length ? (
-                <div className="chonky-tags">
+                <div className="chonky-tags" data-chonky-file-id={file?.id ? file.id: ''}>
                     {fileTags?.map((tag:string, index: number) => (
-                        <span className={'tags-'+ index.toString()+ '-' + tag} key={index.toString()+tag}>{tag}</span>
+                        <span className={'tags-'+ index.toString()+ '-' + tag} key={index.toString()+tag} data-chonky-file-id={file?.id ? file.id: ''}>{tag}</span>
                     ))}
                 </div>)
              : null}
-             {esignStatus != "" ? (  <div className="chonky-esign-status">
+             {esignStatus != "" ? (  <div className="chonky-esign-status" data-chonky-file-id={file?.id ? file.id: ''}>
              {esignStatus}
                 </div>) : null}
               

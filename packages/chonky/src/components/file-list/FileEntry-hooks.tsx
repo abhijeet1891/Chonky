@@ -107,10 +107,10 @@ export const useFileNameComponent = (file: Nullable<FileData>) => {
         }
 
         return (
-            <div className="chonky-file-name">
-              <span className="file-name">{file.sortName ?? name}</span>
-                {extension && <span className="chonky-file-entry-description-title-extension">{extension}</span>}
-                <span className="chonky-file-title">{file.name}</span>
+            <div className="chonky-file-name" data-chonky-file-id={file?.id ? file.id: ''}>
+              <span className="file-name" data-chonky-file-id={file?.id ? file.id: ''}>{file.sortName ?? name}</span>
+                {extension && <span className="chonky-file-entry-description-title-extension" data-chonky-file-id={file?.id ? file.id: ''}>{extension}</span>}
+                <span className="chonky-file-title" data-chonky-file-id={file?.id ? file.id: ''}>{file.name}</span>
             </div>
         );
     }, [file]);
