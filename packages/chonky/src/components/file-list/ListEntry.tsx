@@ -39,7 +39,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
         const ChonkyIcon = useContext(ChonkyIconContext);
         const fileEntryHtmlProps = useFileEntryHtmlProps(file);
         return (
-            <span className={!file?.isDir ?'file-list':''} {...(!file?.isDir ? {onDoubleClick: onFileDoubleClickHandler?.dblRowobj(file?.id ? file.id: '')} : {})}>
+            <span className={!file?.isDir ?'file-list':''} {...(!file?.isDir ? {onDoubleClick: onFileDoubleClickHandler?.dblRowobj(file)} : {})}>
             <div className={`${classes.listFileEntry} ${file?.isChecked ? 'is-checked': ''}`} {...fileEntryHtmlProps} >
                 <div className={commonClasses.focusIndicator}></div>
                 <div
