@@ -95,6 +95,7 @@ export const useDoubleClickHandler = (
                 shiftKey: event.shiftKey,
                 detail:event.detail
             };
+            Logger.debug(`mousedoubleClickEvent.detail`, mouseClickEvent.detail);
             counter.current.clickCount++;
            if (counter.current.clickCount === 2) {
                 if (onDoubleClick) {
