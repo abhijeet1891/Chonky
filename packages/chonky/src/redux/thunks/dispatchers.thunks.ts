@@ -10,11 +10,20 @@ import {
     selectInstanceId, selectSelectedFiles
 } from '../selectors';
 import { thunkActivateSortAction, thunkApplySelectionTransform } from './file-actions.thunks';
-
+import { MouseClickEvent } from '../../components/internal/ClickableWrapper';
 /**
  * Thunk that dispatches actions to the external (user-provided) action handler.
  */
 export const thunkDispatchFileAction = (data: FileActionData<FileAction>): ChonkyThunk => (_dispatch, getState) => {
+    (event: React.MouseEvent) => {
+        const mouseClickEvent: MouseClickEvent = {
+            altKey: event.altKey,
+            ctrlKey: event.ctrlKey || event.metaKey,
+            shiftKey: event.shiftKey,
+            detail:event.detail
+        };
+        Logger.debug(`FILE ACTION mouseClickEvent`, mouseClickEvent.detail);
+    }
     Logger.debug(`FILE ACTION DISPATCH: [${data.id}]`, 'data:', data);
     const state = getState();
     const action = selectFileActionMap(state)[data.id];
