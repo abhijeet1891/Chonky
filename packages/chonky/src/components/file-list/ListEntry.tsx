@@ -40,8 +40,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
         const fileEntryHtmlProps = useFileEntryHtmlProps(file);
         return (
             <>
-            {!file?.isDir ?<><div className={`${classes.listFileEntry} ${file?.isChecked ? 'is-checked': ''}`} {...fileEntryHtmlProps} 
-            onDoubleClick={onFileDoubleClickHandler?.dblRowobj(file)}>
+            {!file?.isDir ?<><div className={`${classes.listFileEntry} ${file?.isChecked ? 'is-checked': ''}`} {...fileEntryHtmlProps} >
                 <div className={commonClasses.focusIndicator}></div>
                 <div
                     className={c([
