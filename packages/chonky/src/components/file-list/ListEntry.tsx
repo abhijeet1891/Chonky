@@ -40,9 +40,10 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
         const fileEntryHtmlProps = useFileEntryHtmlProps(file);
         return (
             <>
-            {!file?.isDir ?<><div className={`${classes.listFileEntry} ${file?.isChecked ? 'is-checked': ''}`} {...fileEntryHtmlProps} >
-                <span className={`${classes.listFileEntry}`}
-            onDoubleClick={onFileDoubleClickHandler?.dblRowobj(file)}>
+            {!file?.isDir ?<>
+                <span onDoubleClick={onFileDoubleClickHandler?.dblRowobj}>
+            <div className={`${classes.listFileEntry} ${file?.isChecked ? 'is-checked': ''}`} {...fileEntryHtmlProps} >
+              
                 <div className={commonClasses.focusIndicator}></div>
                 <div
                     className={c([
@@ -100,8 +101,8 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                     {/* {file?.isShared ? 'Shared': 'Private'} */}
                     {file?.isShared ? sharedOrPrivate?.sharedText: sharedOrPrivate?.privateText}
                 </div>
-                {moreToolAction}</span>
-            </div></>:<><div className={`${classes.listFileEntry} ${file?.isChecked ? 'is-checked': ''}`} {...fileEntryHtmlProps} 
+                {moreToolAction}
+            </div></span></>:<><div className={`${classes.listFileEntry} ${file?.isChecked ? 'is-checked': ''}`} {...fileEntryHtmlProps} 
             >
                 <div className={commonClasses.focusIndicator}></div>
                 <div
