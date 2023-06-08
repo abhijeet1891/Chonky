@@ -43,13 +43,13 @@ export const GridEntryPreviewFolder: React.FC<FileEntryPreviewProps> = React.mem
         [externalClassName || '']: !!externalClassName,
     });
     return (
-        <div className={className}>
-            <div className={folderClasses.folderBackSideMid}>
-                <div className={folderClasses.folderBackSideTop} />
-                <div className={folderClasses.folderFrontSide}>
+        <div className={className} data-chonky-file-id={file?.id ? file.id: ''}>
+            <div className={folderClasses.folderBackSideMid} data-chonky-file-id={file?.id ? file.id: ''}>
+                <div className={folderClasses.folderBackSideTop} data-chonky-file-id={file?.id ? file.id: ''}/>
+                <div className={folderClasses.folderFrontSide} data-chonky-file-id={file?.id ? file.id: ''}>
                     <GridEntryDndIndicator className={fileClasses.dndIndicator} dndState={dndState} />
-                    <div className={c([fileClasses.fileIcon, folderClasses.fileIcon])}>{entryState.childrenCount}</div>
-                    <div className={commonClasses.selectionIndicator}></div>
+                    <div className={c([fileClasses.fileIcon, folderClasses.fileIcon])} data-chonky-file-id={file?.id ? file.id: ''}>{entryState.childrenCount}</div>
+                    <div className={commonClasses.selectionIndicator} data-chonky-file-id={file?.id ? file.id: ''}></div>
                     <FileThumbnail className={fileClasses.thumbnail} thumbnailUrl={entryState.thumbnailUrl} />
                 </div>
             </div>
@@ -141,12 +141,12 @@ export const GridEntryPreviewFile: React.FC<FileEntryPreviewProps> = React.memo(
         [externalClassName || '']: !!externalClassName,
     });
     return (
-        <div className={className}>
+        <div className={className} data-chonky-file-id={file?.id ? file.id: ''}>
             <GridEntryDndIndicator className={fileClasses.dndIndicator} dndState={dndState} />
-            <div className={fileClasses.fileIcon}>
+            <div className={fileClasses.fileIcon} data-chonky-file-id={file?.id ? file.id: ''}>
                 <ChonkyIcon icon={entryState.icon} spin={entryState.iconSpin} file={file}/>
             </div>
-            <div className={commonClasses.selectionIndicator}></div>
+            <div className={commonClasses.selectionIndicator} data-chonky-file-id={file?.id ? file.id: ''}></div>
             <FileThumbnail className={fileClasses.thumbnail} thumbnailUrl={entryState.thumbnailUrl} />
         </div>
     );
