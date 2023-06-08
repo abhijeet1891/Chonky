@@ -102,7 +102,11 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                     {file?.isShared ? sharedOrPrivate?.sharedText: sharedOrPrivate?.privateText}
                 </div>
                 {moreToolAction}
-            </div></span></>:<><div className={`${classes.listFileEntry} ${file?.isChecked ? 'is-checked': ''}`} {...fileEntryHtmlProps} 
+            </div></span>
+            </>
+            :
+            <>
+            <div className={`${classes.listFileEntry} ${file?.isChecked ? 'is-checked': ''}`} {...fileEntryHtmlProps} 
             >
                 <div className={commonClasses.focusIndicator}></div>
                 <div

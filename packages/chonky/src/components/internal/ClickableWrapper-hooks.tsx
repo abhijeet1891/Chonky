@@ -7,6 +7,7 @@
 import React, { useCallback, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Nilable, Nullable } from 'tsdef';
+import { Logger } from '../../util/logger';
 
 import { selectDoubleClickDelay } from '../../redux/selectors';
 import {
@@ -33,11 +34,11 @@ export const useClickHandler = (
                 altKey: event.altKey,
                 ctrlKey: event.ctrlKey || event.metaKey,
                 shiftKey: event.shiftKey,
-
+                detail:event.detail
             };
-
             counter.current.clickCount++;
-            if (counter.current.clickCount === 1) {
+            Logger.debug(`mouseClickEvent.detail`, mouseClickEvent.detail);
+            if (counter.current.clickCount === 1 && mouseClickEvent.detail === 1) {
                 if (onSingleClick) {
                     event.preventDefault();
                     onSingleClick(mouseClickEvent);
@@ -48,7 +49,20 @@ export const useClickHandler = (
                     () => (counter.current.clickCount = 0),
                     doubleClickDelay
                 );
-            } else if (counter.current.clickCount === 2) {
+            }
+            else if( mouseClickEvent.detail === 2){
+                event.preventDefault();
+                if (onDoubleClick) {
+                    event.preventDefault();
+                    onDoubleClick(mouseClickEvent);
+                }
+                if (typeof counter.current.clickTimeout === 'number') {
+                    clearTimeout(counter.current.clickTimeout);
+                    counter.current.clickTimeout = null;
+                    counter.current.clickCount = 0;
+                }
+            }
+            else if (counter.current.clickCount === 2) {
                 if (onDoubleClick) {
                     event.preventDefault();
                     onDoubleClick(mouseClickEvent);
@@ -79,7 +93,7 @@ export const useDoubleClickHandler = (
                 altKey: event.altKey,
                 ctrlKey: event.ctrlKey || event.metaKey,
                 shiftKey: event.shiftKey,
-
+                detail:event.detail
             };
             counter.current.clickCount++;
            if (counter.current.clickCount === 2) {

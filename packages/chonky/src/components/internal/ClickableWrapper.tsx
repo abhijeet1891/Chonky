@@ -13,11 +13,13 @@ export interface MouseClickEvent {
     altKey: boolean;
     ctrlKey: boolean;
     shiftKey: boolean;
+    detail:number;
 }
 export interface MouseDoubleClickEvent {
     altKey: boolean;
     ctrlKey: boolean;
     shiftKey: boolean;
+    detail:number;
 }
 export type MouseClickEventHandler = (event: MouseClickEvent) => void;
 export type MouseDoubleClickEventHandler = (event: MouseDoubleClickEvent) => void;
