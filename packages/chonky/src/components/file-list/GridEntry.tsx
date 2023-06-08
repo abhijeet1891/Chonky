@@ -19,7 +19,7 @@ export const GridEntry: React.FC<FileEntryProps> = React.memo(({ file, selected,
     return (
         <>
           {!file?.isDir ?<>
-          <span onDoubleClick={onFileDoubleClickHandler?.dblRowobj} data-chonky-file-id={file?.id ? file.id: ''}>
+          <span className={entryClassName} onDoubleClick={onFileDoubleClickHandler?.dblRowobj} data-chonky-file-id={file?.id ? file.id: ''}>
           <div className={entryClassName} {...fileEntryHtmlProps} data-chonky-file-id={file?.id ? file.id: ''}>
             {isDirectory ? (
                 <GridEntryPreviewFolder
