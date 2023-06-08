@@ -45,12 +45,12 @@ export const useClickHandler = (
                 }
                 counter.current.clickCount = 1;
                 // @ts-ignore
-                counter.current.clickTimeout = setTimeout(
-                    () => (counter.current.clickCount = 0),
-                    doubleClickDelay
-                );
+                // counter.current.clickTimeout = setTimeout(
+                //     () => (counter.current.clickCount = 0),
+                //     doubleClickDelay
+                // );
             }
-            else if( mouseClickEvent.detail === 2){
+            else if( mouseClickEvent.detail > 1){
                 event.preventDefault();
                 if (onDoubleClick) {
                     event.preventDefault();
