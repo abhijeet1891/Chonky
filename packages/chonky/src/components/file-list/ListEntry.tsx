@@ -39,8 +39,9 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
         const ChonkyIcon = useContext(ChonkyIconContext);
         const fileEntryHtmlProps = useFileEntryHtmlProps(file);
         return (
-            <span className={!file?.isDir ?'file-list':''} {...(!file?.isDir ? {onDoubleClick: onFileDoubleClickHandler?.dblRowobj} : {})}>
-            <div className={`${classes.listFileEntry} ${file?.isChecked ? 'is-checked': ''}`} {...fileEntryHtmlProps} >
+            <>
+            {!file?.isDir ?<><div className={`${classes.listFileEntry} ${file?.isChecked ? 'is-checked': ''}`} {...fileEntryHtmlProps} 
+            onDoubleClick={onFileDoubleClickHandler?.dblRowobj(file)}>
                 <div className={commonClasses.focusIndicator}></div>
                 <div
                     className={c([
@@ -99,8 +100,69 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                     {file?.isShared ? sharedOrPrivate?.sharedText: sharedOrPrivate?.privateText}
                 </div>
                 {moreToolAction}
-            </div>
-            </span>
+            </div></>:<><div className={`${classes.listFileEntry} ${file?.isChecked ? 'is-checked': ''}`} {...fileEntryHtmlProps} 
+            >
+                <div className={commonClasses.focusIndicator}></div>
+                <div
+                    className={c([
+                        commonClasses.selectionIndicator,
+                        classes.listFileEntrySelection,
+                    ])}
+                ></div>
+                
+                <div className={classes.listFileEntryStar}>
+                {!file?.isDir ? (
+                    <>
+                    <div className={file?.id ? file.id: ''} data-row-id={file?.id ? file.id: ''}>
+                    {file?.isStarred ? activeStar : deactivateStar}
+                    </div>
+                    </>
+                    ) : null
+                }
+                </div>
+                    
+                <div className={classes.listFileEntryIcon}>
+                    <ChonkyIcon
+                        icon={dndIconName ?? entryState.icon}
+                        spin={dndIconName ? false : entryState.iconSpin}
+                        fixedWidth={true}
+                        file={file}
+                    />
+                </div>
+                <div
+                    className={classes.listFileEntryName}
+                    // title={file ? file.name : undefined}
+                >
+                    <FileEntryName file={file} tags={tags} esignStatus={esignStatus}/>
+                </div>
+                {file?.isSearchResults && file?.folderPath ? (
+                    <div className={classes.listFileSearch}>
+                        {dotsInFiles(file?.folderPath)}
+                        <span className="list-file-search-tooltip">{file?.folderPath}</span>
+                    </div>
+                ): null}
+                <div className={classes.listFileEntryProperty}>
+                    {file ? (
+                        fileModDateString ?? <span>—</span>
+                    ) : (
+                        <TextPlaceholder minLength={5} maxLength={15} />
+                    )}
+                </div>
+                <div className={classes.listFileSizeProperty}>
+                    {file ? (
+                        fileSizeString ?? <span>—</span>
+                    ) : (
+                        <TextPlaceholder minLength={10} maxLength={20} />
+                    )}
+                </div>
+                <div className={classes.listFileShared}>
+                    {/* {file?.isShared ? 'Shared': 'Private'} */}
+                    {file?.isShared ? sharedOrPrivate?.sharedText: sharedOrPrivate?.privateText}
+                </div>
+                {moreToolAction}
+            </div></>}
+            </>
+            
         );
     }
 );
