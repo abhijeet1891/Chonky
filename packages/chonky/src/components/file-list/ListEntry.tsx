@@ -41,7 +41,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
         return (
             <>
             {!file?.isDir ?<>
-                <span onDoubleClick={onFileDoubleClickHandler?.dblRowobj}>
+                <span onDoubleClick={onFileDoubleClickHandler?.dblRowobj} data-chonky-file-id={file?.id ? file.id: ''}>
             <div className={`${classes.listFileEntry} ${file?.isChecked ? 'is-checked': ''}`} {...fileEntryHtmlProps} >
               
                 <div className={commonClasses.focusIndicator}></div>
@@ -52,10 +52,10 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                     ])}
                 ></div>
                 
-                <div className={classes.listFileEntryStar}>
+                <div className={classes.listFileEntryStar} data-chonky-file-id={file?.id ? file.id: ''}>
                 {!file?.isDir ? (
                     <>
-                    <div className={file?.id ? file.id: ''} data-row-id={file?.id ? file.id: ''}>
+                    <div className={file?.id ? file.id: ''} data-row-id={file?.id ? file.id: ''} data-chonky-file-id={file?.id ? file.id: ''}>
                     {file?.isStarred ? activeStar : deactivateStar}
                     </div>
                     </>
@@ -63,7 +63,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                 }
                 </div>
                     
-                <div className={classes.listFileEntryIcon}>
+                <div className={classes.listFileEntryIcon}  data-chonky-file-id={file?.id ? file.id: ''}>
                     <ChonkyIcon
                         icon={dndIconName ?? entryState.icon}
                         spin={dndIconName ? false : entryState.iconSpin}
@@ -73,31 +73,31 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                 </div>
                 <div
                     className={classes.listFileEntryName}
-                    // title={file ? file.name : undefined}
-                >
+                    // title={file ? file.name : undefined} 
+                    data-chonky-file-id={file?.id ? file.id: ''}>
                     <FileEntryName file={file} tags={tags} esignStatus={esignStatus}/>
                 </div>
                 {file?.isSearchResults && file?.folderPath ? (
-                    <div className={classes.listFileSearch}>
+                    <div className={classes.listFileSearch} data-chonky-file-id={file?.id ? file.id: ''}>
                         {dotsInFiles(file?.folderPath)}
-                        <span className="list-file-search-tooltip">{file?.folderPath}</span>
+                        <span className="list-file-search-tooltip" data-chonky-file-id={file?.id ? file.id: ''}>{file?.folderPath}</span>
                     </div>
                 ): null}
-                <div className={classes.listFileEntryProperty}>
+                <div className={classes.listFileEntryProperty} data-chonky-file-id={file?.id ? file.id: ''}>
                     {file ? (
                         fileModDateString ?? <span>—</span>
                     ) : (
                         <TextPlaceholder minLength={5} maxLength={15} />
                     )}
                 </div>
-                <div className={classes.listFileSizeProperty}>
+                <div className={classes.listFileSizeProperty} data-chonky-file-id={file?.id ? file.id: ''}>
                     {file ? (
                         fileSizeString ?? <span>—</span>
                     ) : (
                         <TextPlaceholder minLength={10} maxLength={20} />
                     )}
                 </div>
-                <div className={classes.listFileShared}>
+                <div className={classes.listFileShared} data-chonky-file-id={file?.id ? file.id: ''}>
                     {/* {file?.isShared ? 'Shared': 'Private'} */}
                     {file?.isShared ? sharedOrPrivate?.sharedText: sharedOrPrivate?.privateText}
                 </div>
