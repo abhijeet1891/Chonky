@@ -78,6 +78,7 @@ const App = () => {
                 sharedOrPrivate={{sharedText: "", privateText: ""}}
                 listHeader={{name:"",location:"",modified:"",sharing:""}}
                 moreToolAction={<div>moreToolAction</div>}
+                onFileDoubleClickHandler={<div>onFileDoubleClickHandler</div>}
             />
         </div>
     );

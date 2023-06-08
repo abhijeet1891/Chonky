@@ -13,6 +13,7 @@ import { FileViewMode } from '../../types/file-view.types';
 import { useInstanceVariable } from '../../util/hooks-helpers';
 import { makeLocalChonkyStyles } from '../../util/styles';
 import { SmartFileEntry } from './FileEntry';
+import { AnyFunction } from 'tsdef';
 
 export interface FileListListProps {
     width: number;
@@ -33,10 +34,13 @@ export interface FileListListProps {
     };
     moreToolAction?: React.ReactElement<any, any>;
     esignStatus: React.ReactElement<any, any>;
+    onFileDoubleClickHandler?:{
+        dblRowobj: AnyFunction;
+    };
 }
 
 export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
-    const { width, height, fileListStyle = { height: 0 }, activeStar, deactivateStar, tags, sharedOrPrivate,listHeader,moreToolAction,esignStatus } = props;
+    const { width, height, fileListStyle = { height: 0 }, activeStar, deactivateStar, tags, sharedOrPrivate,listHeader,moreToolAction,esignStatus,onFileDoubleClickHandler } = props;
 
     const viewConfig = useSelector(selectFileViewConfig);
 
@@ -66,6 +70,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
                         listHeader={listHeader}
                         moreToolAction={moreToolAction}
                         esignStatus={esignStatus}
+                        onFileDoubleClickHandler={onFileDoubleClickHandler}
                     />
                 </div>
             );

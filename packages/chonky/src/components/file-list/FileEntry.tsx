@@ -18,6 +18,7 @@ import { DnDFileEntry } from './DnDFileEntry';
 import { useFileClickHandlers } from './FileEntry-hooks';
 import { GridEntry } from './GridEntry';
 import { ListEntry } from './ListEntry';
+import { AnyFunction } from 'tsdef';
 
 export interface SmartFileEntryProps {
     fileId: Nullable<string>;
@@ -38,6 +39,9 @@ export interface SmartFileEntryProps {
     };
     moreToolAction?: React.ReactElement<any, any>;
     esignStatus?: React.ReactElement<any, any>;
+    onFileDoubleClickHandler?:{
+        dblRowobj: AnyFunction;
+    };
 }
 
 const disabledDndState: DndEntryState = {
@@ -47,7 +51,7 @@ const disabledDndState: DndEntryState = {
 };
 
 export const SmartFileEntry: React.FC<SmartFileEntryProps> = React.memo(
-    ({ fileId, displayIndex, fileViewMode, activeStar, deactivateStar, tags, sharedOrPrivate,listHeader,moreToolAction,esignStatus }) => {
+    ({ fileId, displayIndex, fileViewMode, activeStar, deactivateStar, tags, sharedOrPrivate,listHeader,moreToolAction,esignStatus,onFileDoubleClickHandler }) => {
         const classes = useStyles();
 
         // Basic properties
@@ -75,7 +79,7 @@ export const SmartFileEntry: React.FC<SmartFileEntryProps> = React.memo(
             tags,
             sharedOrPrivate,
             listHeader,
-            moreToolAction,esignStatus
+            moreToolAction,esignStatus,onFileDoubleClickHandler
         };
 
         let EntryComponent: React.FC<FileEntryProps>;

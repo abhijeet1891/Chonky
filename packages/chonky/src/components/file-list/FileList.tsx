@@ -21,6 +21,7 @@ import {
 import { FileListEmpty } from './FileListEmpty';
 import { GridContainer } from './GridContainer';
 import { ListContainer } from './ListContainer';
+import { AnyFunction } from 'tsdef';
 
 export interface FileListProps {
     onScroll?: (e: UIEvent<HTMLDivElement>) => void;
@@ -40,6 +41,9 @@ export interface FileListProps {
     };
     moreToolAction?:  React.ReactElement<any, any>;
     esignStatus: React.ReactElement<any, any>;
+    onFileDoubleClickHandler?:{
+        dblRowobj: AnyFunction;
+    };
 }
 
 interface StyleState {
@@ -61,7 +65,7 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
     const localClasses = useLocalStyles(styleState);
     const classes = useStyles(viewConfig);
     const headerClasses =useHeaderStyles();
-    const { onScroll, fileListStyle, activeStar, deactivateStar, tags, sharedOrPrivate,listHeader,moreToolAction,esignStatus } = props;
+    const { onScroll, fileListStyle, activeStar, deactivateStar, tags, sharedOrPrivate,listHeader,moreToolAction,esignStatus,onFileDoubleClickHandler } = props;
 
     // In Chonky v0.x, this field was user-configurable. In Chonky v1.x+, we hardcode
     // this to `true` to simplify configuration. Users can just wrap Chonky in their
@@ -108,6 +112,7 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
                         listHeader={listHeader}
                         moreToolAction={moreToolAction}
                         esignStatus={esignStatus}
+                        onFileDoubleClickHandler={onFileDoubleClickHandler}
                     />
                    </div>
                     </>

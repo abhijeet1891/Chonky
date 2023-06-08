@@ -8,6 +8,7 @@ import { FileArray } from './file.types';
 import { I18nConfig } from './i18n.types';
 import { ChonkyIconProps } from './icons.types';
 import { ThumbnailGenerator } from './thumbnails.types';
+import { AnyFunction } from 'tsdef';
 
 /**
  * File browser methods exposed to developers via the `FileBrowser` ref.
@@ -196,4 +197,7 @@ export interface FileBrowserProps {
     };
     moreToolAction?: React.ReactElement<any, any>;
     esignStatus: React.ReactElement<any, any>;
+    onFileDoubleClickHandler?:{
+        dblRowobj: AnyFunction;
+    };
 }

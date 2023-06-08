@@ -1,6 +1,7 @@
 import { Nullable } from 'tsdef';
 import { ElementType, UIEvent, CSSProperties } from 'react';
 import { FileData } from './file.types';
+import { AnyFunction } from 'tsdef';
 
 export interface DndEntryState {
     dndIsDragging?: boolean;
@@ -28,4 +29,7 @@ export interface FileEntryProps {
     };
     moreToolAction?: React.ReactElement<any, any>;
     esignStatus?: React.ReactElement<any, any>;
+    onFileDoubleClickHandler?:{
+        dblRowobj: AnyFunction;
+    };
 }
