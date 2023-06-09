@@ -7,7 +7,7 @@ import { useFileEntryHtmlProps, useFileEntryState } from './FileEntry-hooks';
 import { FileEntryName } from './FileEntryName';
 import { FileEntryState, GridEntryPreviewFile, GridEntryPreviewFolder } from './GridEntryPreview';
 
-export const GridEntry: React.FC<FileEntryProps> = React.memo(({ file, selected, focused, dndState }) => {
+export const GridEntry: React.FC<FileEntryProps> = React.memo(({ file, selected, focused, dndState,onFileDoubleClickHandler }) => {
     const isDirectory = FileHelper.isDirectory(file);
     const entryState = useFileEntryState(file, selected, focused);
 
@@ -17,7 +17,10 @@ export const GridEntry: React.FC<FileEntryProps> = React.memo(({ file, selected,
         [classes.gridFileEntry]: true,
     });
     return (
-        <div className={entryClassName} {...fileEntryHtmlProps}>
+        <>
+          {!file?.isDir ?<>
+            <span className='grid-list-span' onDoubleClick={onFileDoubleClickHandler?.dblRowobj} data-chonky-file-id={file?.id ? file.id: ''}>
+            <div className={entryClassName} {...fileEntryHtmlProps}>
             {isDirectory ? (
                 <GridEntryPreviewFolder
                     className={classes.gridFileEntryPreview}
@@ -37,6 +40,29 @@ export const GridEntry: React.FC<FileEntryProps> = React.memo(({ file, selected,
                 <FileEntryName className={classes.gridFileEntryName} file={file} />
             </div>
         </div>
+        </span>
+          </>:<>
+          <div className={entryClassName} {...fileEntryHtmlProps}>
+            {isDirectory ? (
+                <GridEntryPreviewFolder
+                    className={classes.gridFileEntryPreview}
+                    entryState={entryState}
+                    dndState={dndState}
+                    file={file}
+                />
+            ) : (
+                <GridEntryPreviewFile
+                    className={classes.gridFileEntryPreview}
+                    entryState={entryState}
+                    dndState={dndState}
+                    file={file}
+                />
+            )}
+            <div className={classes.gridFileEntryNameContainer}>
+                <FileEntryName className={classes.gridFileEntryName} file={file} />
+            </div>
+        </div></>}</>
+        
     );
 });
 GridEntry.displayName = 'GridEntry';
