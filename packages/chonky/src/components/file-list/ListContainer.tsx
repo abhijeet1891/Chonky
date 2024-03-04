@@ -59,6 +59,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
         const rowRenderer = (data: { index: number; style: CSSProperties }) => {
             return (
                 <div style={{ ...data.style  }} className="row-item" id={`checkbox-row-${data.index}`} > 
+                
                     <SmartFileEntry
                         fileId={displayFileIds[data.index] ?? null}
                         displayIndex={data.index}
